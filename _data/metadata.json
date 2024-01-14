@@ -1,7 +1,7 @@
 {
   "title": "Home",
-  "url": "https://locke0.github.io",
-  "domain": "locke0.github.io",
+  "url": "https://locke0.github.io/simple-blog",
+  "domain": "locke0.github.io/simple-blog",
   "description": "projects, ideas, solutions",
   "genre": "Insert a schema.org genre",
   "googleAnalyticsId": "GA ID. Update me. Note, that this is not compatible with the not-yet-commonly used version 4 of Google Analytics",
