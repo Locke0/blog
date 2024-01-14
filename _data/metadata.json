@@ -10,11 +10,11 @@
     "subtitle": "Subtitle. Update me.",
     "filename": "feed.xml",
     "path": "/feed/feed.xml", 
-    "id": "https://locke0.github.io/blog"
+    "id": "https://locke0.github.io"
   },
   "jsonfeed": {
     "path": "/feed/feed.json",
-    "url": "https://locke0.github.io/blog/feed/feed.json"
+    "url": "https://locke0.github.io/feed/feed.json"
   },
   "author": {
     "name": "Yangyue (Locke) Wang",
