@@ -7,4 +7,4 @@ eleventyNavigation:
   order: 3
 ---
 
-I am an engineer that writes stuff.
+An engineer that writes stuff and hacks things.
