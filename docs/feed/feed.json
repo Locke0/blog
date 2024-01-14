@@ -1,7 +1,7 @@
 {
   "version": "https://jsonfeed.org/version/1",
   "title": "Home",
-  "home_page_url": "https://locke0.github.io",
+  "home_page_url": "https://locke0.github.io/simple-blog",
   "feed_url": "https://update-me.com/feed/feed.json",
   "description": "projects, ideas, solutions",
   "author": {
