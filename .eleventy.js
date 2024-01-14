@@ -65,7 +65,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginNavigation);
 
   eleventyConfig.addPlugin(localImages, {
-    distPath: "_site",
+    distPath: "docs",
     assetPath: "/img/remote",
     selector:
       "img,amp-img,amp-video,meta[property='og:image'],meta[name='twitter:image'],amp-story",
@@ -248,7 +248,7 @@ module.exports = function (eleventyConfig) {
       includes: "_includes",
       data: "_data",
       // Warning hardcoded throughout repo. Find and replace is your friend :)
-      output: "_site",
+      output: "docs",
     },
   };
 };
