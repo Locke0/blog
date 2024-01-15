@@ -1,35 +1,35 @@
-name: Eleventy Build
-on:
-  push:
-    branches:
-      - main
+# name: Eleventy Build
+# on:
+#   push:
+#     branches:
+#       - main
       
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
     
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x]
+#     strategy:
+#       matrix:
+#         node-version: [18.x, 20.x]
 
-    steps:
-        - uses: actions/checkout@v2
-
-
-        - name: Setup Node
-          uses: actions/setup-node@v1
-          with:
-            node-version: ${{ matrix.node-version }}
+#     steps:
+#         - uses: actions/checkout@v2
 
 
-        - run: npm ci
+#         - name: Setup Node
+#           uses: actions/setup-node@v1
+#           with:
+#             node-version: ${{ matrix.node-version }}
 
 
-        - run: npm run build
+#         - run: npm ci
 
 
-        - name: Deploy
-          uses: peaceiris/actions-gh-pages@v3
-          with:
-            deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-            publish_dir: ./dist
+#         - run: npm run build
+
+
+#         - name: Deploy
+#           uses: peaceiris/actions-gh-pages@v3
+#           with:
+#             deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+#             publish_dir: ./dist
