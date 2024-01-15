@@ -1,6 +1,4 @@
 name: Eleventy Build
-
-
 on:
   push:
     branches:
@@ -9,6 +7,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
     steps:
         - uses: actions/checkout@v2
 
@@ -16,7 +19,7 @@ jobs:
         - name: Setup Node
           uses: actions/setup-node@v1
           with:
-            node-version: '10.x'
+            node-version: ${{ matrix.node-version }}
 
 
         - run: npm ci
