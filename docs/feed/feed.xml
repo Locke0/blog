@@ -25,7 +25,7 @@
 &lt;h1 id=&quot;test-svg&quot;&gt;Test SVG &lt;a class=&quot;direct-link&quot; href=&quot;#test-svg&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&quot;https://locke0.github.io/blog/img/share.svg&quot; alt=&quot;Test Share SVG&quot;&gt;&lt;/p&gt;
 &lt;h1 id=&quot;test-relative-local-image&quot;&gt;Test Relative Local Image &lt;a class=&quot;direct-link&quot; href=&quot;#test-relative-local-image&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&quot;https://locke0.github.io/blog/img/doener.jpg&quot; alt=&quot;Test Share JPG&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://locke0.github.io/blog/img/remote/ZayYlG-1280w.jpg&quot; alt=&quot;Test Share JPG&quot;&gt;&lt;/p&gt;
 &lt;h1 id=&quot;test-png&quot;&gt;Test PNG &lt;a class=&quot;direct-link&quot; href=&quot;#test-png&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&quot;https://www.clipartmax.com/png/full/0-9896_film-clipart-free-to-use-public-domain-movie-clip-art-directors-board.png&quot; alt=&quot;Png By @clipartmax.com&quot;&gt;&lt;/p&gt;
 
