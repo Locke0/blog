@@ -1,5 +1,5 @@
 {
-  "title": "Home",
+  "title": "Locke's Home",
   "url": "https://locke0.github.io/blog",
   "domain": "locke0.github.io/blog",
   "description": "projects, ideas, solutions",
@@ -7,10 +7,10 @@
   "googleAnalyticsId": "GA ID. Update me. Note, that this is not compatible with the not-yet-commonly used version 4 of Google Analytics",
   "sendWebVitals": false,
   "feed": {
-    "subtitle": "Subtitle. Update me.",
+    "subtitle": "Locke's projects",
     "filename": "feed.xml",
     "path": "/feed/feed.xml", 
-    "id": "https://locke0.github.io"
+    "id": "https://locke0.github.io/blog/posts"
   },
   "jsonfeed": {
     "path": "/feed/feed.json",

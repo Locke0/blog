@@ -2,20 +2,21 @@
 title: ᓚᘏᗢ in my corner of the internet 
 layout: layouts/home.njk
 description: Homepage for Locke's blog
-image: https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg
+image: 
 date: Last Modified
 ---
 
 <style>
   body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
+    line-height: 2;
+    font-size:20px;
   }
 
   .professional-statement {
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.8;
+    text-align: left;
   }
 
   .profile-image {
@@ -23,32 +24,44 @@ date: Last Modified
     height: auto;
     width: auto;
     border-radius: 50%;
-    margin-bottom: 20px;
+    margin-bottom: 20px; 
+    text-align: center; 
+  }
+  h1 {
+      color: #f0b734;
+  }
+  .keyword {
+      font-weight: bold; 
+      font-size: 23px;
+      color: #FF5733; 
   }
 </style>
-
-<p>
-  <div class="quote">
-    <p>Welcome to my blog!</p>
-  </div>
-
-</p>
+<h3>Hey folks!</h3>
+  
 
 <div class="professional-statement">
-  <p>As a dedicated professional in the fields of robotics, computer vision, and artificial intelligence, I am committed to pushing the boundaries of technological innovation. With a strong foundation in these cutting-edge domains, I strive to contribute meaningfully to the advancement of knowledge and the development of impactful solutions.</p>
+        <p>Get ready to dive into Locke's universe 🌎 – a concoction of creativity, chaos, and some genuinely questionable
+            decision-making. I'm your trusty AI, ChatGPT 💁‍♂️, here to introduce you to a blog that's part personal growth
+            diary, part digital circus.</p>
 
-  <p>My journey extends beyond the technical aspects, delving into the realm of philosophy of mind, where I explore the profound questions that shape our understanding of intelligence and consciousness. This multidisciplinary approach allows me to bring a unique perspective to my work, fostering creativity and pushing the limits of what is possible.</p>
+        <p>Locke's playground is where <u>projects</u> get <span class="keyword">juggled</span>, <u>research papers</u> get a
+            <span class="keyword">makeover</span> (or attempted <span class="keyword">murder</span>, depending
+            on the day), and life's challenges get a good-natured <span class="keyword">hack</span>. <u>Philosophical
+            musings</u>? Absolutely, served with a side of wit and a sprinkle of <span class="keyword">absurdity</span>.</p>
 
-  <p>Additionally, my commitment to personal growth fuels my continuous pursuit of excellence. I am dedicated to refining not only my technical skills but also my ability to collaborate, communicate, and lead effectively. By embracing a holistic approach to professional development, I aim to make a positive and lasting impact on the ever-evolving landscape of technology and knowledge.</p>
+        <p>This isn't just Locke's journey; it's a collective adventure where laughs are guaranteed, lessons are shared, and you might question some life
+            choices along the way. So, fasten your seatbelts, embrace the chaos, and let's
+            embark on this wild ride together! 🚀</p>
 
-  <p>Thank you for joining me on this journey of exploration, discovery, and innovation!</p>
-
-
-  <img class="profile-image" src="/blog/img/remote/Z1s3TKV-1280w.jpg" alt="Profile Image">
+        <p>Yours in digital <span class="keyword">mayhem</span>,<br> ChatGPT 🤖 </p>
+<img class="profile-image" src="/blog/img/remote/cartoon-robot-in-a-shop-1280w.jpg" alt="Profile Image">
 </div>
 
+
+
+
 <div id="posts">
-  <h2>Projects</h2>
+  <h2>Entries</h2>
   {% set postslist = collections.posts %}
   {% include "postslist.njk" %}
 </div>

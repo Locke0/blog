@@ -1,33 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<title>Home</title>
-	<subtitle>Subtitle. Update me.</subtitle>
+	<title>Locke&#39;s Home</title>
+	<subtitle>Locke&#39;s projects</subtitle>
 	
 	<link href="https://locke0.github.io/blog/feed/feed.xml" rel="self"/>
 	<link href="https://locke0.github.io/blog"/>
-	<updated>2018-07-03T20:00:00-04:00</updated>
-	<id>https://locke0.github.io</id>
+	<updated>2024-01-18T19:00:00-05:00</updated>
+	<id>https://locke0.github.io/blog/posts</id>
 	<author>
 		<name>Yangyue (Locke) Wang</name>
 		<email></email>
 	</author>
 	
 	<entry>
-		<title>Twitter Sentiment Analysis</title>
-		<link href="https://locke0.github.io/blog/posts/TwitterSentimentAnalysis/"/>
-		<updated>2018-07-03T20:00:00-04:00</updated>
-		<id>https://locke0.github.io/blog/posts/TwitterSentimentAnalysis/</id>
+		<title>Orb SLAM 3 [PROJECT]</title>
+		<link href="https://locke0.github.io/blog/posts/TestPost/"/>
+		<updated>2024-01-18T19:00:00-05:00</updated>
+		<id>https://locke0.github.io/blog/posts/TestPost/</id>
 		<content type="html">
-		  &lt;p&gt;Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.&lt;/p&gt;
-&lt;h2 id=&quot;section-header&quot;&gt;Section Header &lt;a class=&quot;direct-link&quot; href=&quot;#section-header&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.&lt;/p&gt;
-&lt;p&gt;Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.&lt;/p&gt;
-&lt;h1 id=&quot;test-svg&quot;&gt;Test SVG &lt;a class=&quot;direct-link&quot; href=&quot;#test-svg&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&quot;https://locke0.github.io/blog/img/share.svg&quot; alt=&quot;Test Share SVG&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;test-relative-local-image&quot;&gt;Test Relative Local Image &lt;a class=&quot;direct-link&quot; href=&quot;#test-relative-local-image&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&quot;https://locke0.github.io/blog/img/remote/ZayYlG-1280w.jpg&quot; alt=&quot;Test Share JPG&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;test-png&quot;&gt;Test PNG &lt;a class=&quot;direct-link&quot; href=&quot;#test-png&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&quot;https://www.clipartmax.com/png/full/0-9896_film-clipart-free-to-use-public-domain-movie-clip-art-directors-board.png&quot; alt=&quot;Png By @clipartmax.com&quot;&gt;&lt;/p&gt;
+		  &lt;p&gt;Coming soon...&lt;/p&gt;
+
+			
+		</content>
+	</entry>
+	
+	<entry>
+		<title>Is Mind Function Map Legit? [PHILOSOPHY]</title>
+		<link href="https://locke0.github.io/blog/posts/TestPostTwo/"/>
+		<updated>2024-01-18T19:00:00-05:00</updated>
+		<id>https://locke0.github.io/blog/posts/TestPostTwo/</id>
+		<content type="html">
+		  &lt;p&gt;Coming soon...&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://locke0.github.io/blog/img/remote/robots-factory-1280w.jpg&quot; alt=&quot;robot image&quot;&gt;&lt;/p&gt;
+
+			
+		</content>
+	</entry>
+	
+	<entry>
+		<title>The Canonical Stack Machine Refresher [STUDY NOTES]</title>
+		<link href="https://locke0.github.io/blog/posts/TheCanonicalStackMachine/"/>
+		<updated>2024-01-18T19:00:00-05:00</updated>
+		<id>https://locke0.github.io/blog/posts/TheCanonicalStackMachine/</id>
+		<content type="html">
+		  &lt;p&gt;Coming soon...&lt;/p&gt;
 
 			
 		</content>

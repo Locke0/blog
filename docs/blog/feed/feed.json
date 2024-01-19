@@ -1,6 +1,6 @@
 {
   "version": "https://jsonfeed.org/version/1",
-  "title": "Home",
+  "title": "Locke&#39;s Home",
   "home_page_url": "https://locke0.github.io/blog",
   "feed_url": "https://locke0.github.io/feed/feed.json",
   "description": "projects, ideas, solutions",
@@ -9,11 +9,23 @@
     "url": ""
   },
   "items": [{
-      "id": "https://locke0.github.io/blog/posts/TwitterSentimentAnalysis/",
-      "url": "https://locke0.github.io/blog/posts/TwitterSentimentAnalysis/",
-      "title": "Twitter Sentiment Analysis",
-      "content_html": "<p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>\n<h2 id=\"section-header\">Section Header <a class=\"direct-link\" href=\"#section-header\">#</a></h2>\n<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>\n<p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>\n<h1 id=\"test-svg\">Test SVG <a class=\"direct-link\" href=\"#test-svg\">#</a></h1>\n<p><img src=\"/blog/img/share.svg\" alt=\"Test Share SVG\"></p>\n<h1 id=\"test-relative-local-image\">Test Relative Local Image <a class=\"direct-link\" href=\"#test-relative-local-image\">#</a></h1>\n<p><img src=\"/blog/img/remote/ZayYlG-1280w.jpg\" alt=\"Test Share JPG\"></p>\n<h1 id=\"test-png\">Test PNG <a class=\"direct-link\" href=\"#test-png\">#</a></h1>\n<p><img src=\"https://www.clipartmax.com/png/full/0-9896_film-clipart-free-to-use-public-domain-movie-clip-art-directors-board.png\" alt=\"Png By @clipartmax.com\"></p>\n",
-      "date_published": "2018-07-03T20:00:00-04:00"
+      "id": "https://locke0.github.io/blog/posts/TheCanonicalStackMachine/",
+      "url": "https://locke0.github.io/blog/posts/TheCanonicalStackMachine/",
+      "title": "The Canonical Stack Machine Refresher [STUDY NOTES]",
+      "content_html": "<p>Coming soon...</p>\n",
+      "date_published": "2024-01-18T19:00:00-05:00"
+    },{
+      "id": "https://locke0.github.io/blog/posts/TestPostTwo/",
+      "url": "https://locke0.github.io/blog/posts/TestPostTwo/",
+      "title": "Is Mind Function Map Legit? [PHILOSOPHY]",
+      "content_html": "<p>Coming soon...</p>\n<p><img src=\"/blog/img/remote/robots-factory-1280w.jpg\" alt=\"robot image\"></p>\n",
+      "date_published": "2024-01-18T19:00:00-05:00"
+    },{
+      "id": "https://locke0.github.io/blog/posts/TestPost/",
+      "url": "https://locke0.github.io/blog/posts/TestPost/",
+      "title": "Orb SLAM 3 [PROJECT]",
+      "content_html": "<p>Coming soon...</p>\n",
+      "date_published": "2024-01-18T19:00:00-05:00"
     }
   ]
 }
