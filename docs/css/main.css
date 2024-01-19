@@ -88,10 +88,6 @@ dl {
   display: block !important;
 }
 
-header aside {
-  font-style: italic;
-}
-
 #nav {
   z-index: 2;
   position: relative;

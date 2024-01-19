@@ -11,19 +11,19 @@
   "items": [{
       "id": "https://locke0.github.io/blog/posts/TheCanonicalStackMachine/",
       "url": "https://locke0.github.io/blog/posts/TheCanonicalStackMachine/",
-      "title": "The Canonical Stack Machine Refresher [STUDY NOTES]",
+      "title": "The Canonical Stack Machine Refresher",
       "content_html": "<p>Coming soon...</p>\n",
       "date_published": "2024-01-18T19:00:00-05:00"
     },{
       "id": "https://locke0.github.io/blog/posts/TestPostTwo/",
       "url": "https://locke0.github.io/blog/posts/TestPostTwo/",
-      "title": "Is Mind Function Map Legit? [PHILOSOPHY]",
+      "title": "Is Mind Function Map Legit?",
       "content_html": "<p>Coming soon...</p>\n<p><img src=\"/blog/img/remote/robots-factory-1280w.jpg\" alt=\"robot image\"></p>\n",
       "date_published": "2024-01-18T19:00:00-05:00"
     },{
       "id": "https://locke0.github.io/blog/posts/TestPost/",
       "url": "https://locke0.github.io/blog/posts/TestPost/",
-      "title": "Orb SLAM 3 [PROJECT]",
+      "title": "Orb SLAM 3",
       "content_html": "<p>Coming soon...</p>\n",
       "date_published": "2024-01-18T19:00:00-05:00"
     }

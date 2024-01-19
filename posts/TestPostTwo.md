@@ -1,10 +1,9 @@
 ---
-title: Is Mind Function Map Legit? [PHILOSOPHY]
-description: This is a post on my learning on Canonical Stack Machine.
+title: Is Mind Function Map Legit?
+description: Looking into Mind Function Map
 date: 2024-01-19
 scheduled: 2024-01-19
-tags:
-  - notes
+tags: philosophy
 layout: layouts/post.njk
 ---
 

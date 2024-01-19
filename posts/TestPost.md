@@ -1,10 +1,9 @@
 ---
-title: Orb SLAM 3 [PROJECT]
-description: This is a post on my learning on Canonical Stack Machine.
+title: Orb SLAM 3
+description: Orb SLAM
 date: 2024-01-19
 scheduled: 2024-01-19
-tags:
-  - notes
+tags: study notes
 layout: layouts/post.njk
 ---
 
