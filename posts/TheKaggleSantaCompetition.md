@@ -1,6 +1,6 @@
 ---
-title: Solve the Kaggle Santa Puzzle
-description: as a beginner...🤔
+title: Solve the Kaggle Polytope Puzzle
+description: with no experience in Rubik's Cube...🤔
 date: 2024-01-20
 scheduled: 2024-01-20
 tags: PROJECT | In progress
