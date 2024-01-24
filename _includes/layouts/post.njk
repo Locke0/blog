@@ -18,12 +18,16 @@ templateClass: tmpl-post
 {{ content | safe }}
 
 <h3 style="font-style: italic; margin-top: 10rem;">Connect with me</h3>
-<div style="display: flex; flex-direction: row; object-fit: contain;">
-  <img class="image" style="width: auto; height: auto; object-fit: contain; flex-shrink: 0; margin-right: 40px;" src="/blog/img/remote/jumping-cat-in-a-cage.gif" alt="Profile Image">
+<div class="row">
+  <div class="col-sm-4" style="margin-right: 30px;">
+  <img class="image" style="width: 50%; max-width:50%; height: auto; object-fit: contain; " src="/blog/img/remote/jumping-cat-in-a-cage.gif" alt="Profile Image">
+  </div>
+  <div class="col-sm-6">
   <p> Since you've made it this far, <a href="{{ shareUrl | safe }}" on-click="share">sharing</a> this article on your favorite social media network 
   would be highly appreciated 💖! Let me know what you think! Feel free to ping or connect with me on
   <a href="https://twitter.com/{{ metadata.author.twitterHandle }}" target="_blank" rel="noopener">Twitter</a> or
   <a href="https://www.linkedin.com/in/{{ metadata.author.linkedinHandle }}" target="_blank" rel="noopener">LinkedIn</a>. </p>
+  </div>
 </div>
 
 <share-widget>
