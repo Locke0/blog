@@ -1,10 +1,10 @@
 {
-  "title": "Locke's Home",
+  "title": "Locke's engineering journal",
   "url": "https://locke0.github.io/blog",
   "domain": "locke0.github.io/blog",
   "description": "projects, ideas, solutions",
   "genre": "Insert a schema.org genre",
-  "googleAnalyticsId": "GA ID. Update me. Note, that this is not compatible with the not-yet-commonly used version 4 of Google Analytics",
+  "googleAnalyticsId": "G-ZVJSFTSLL4",
   "sendWebVitals": false,
   "feed": {
     "subtitle": "Locke's projects",
@@ -18,7 +18,8 @@
   },
   "author": {
     "name": "Yangyue (Locke) Wang",
-    "twitterHandle": "Yangyue_Wang"
+    "twitterHandle": "Yangyue_Wang",
+    "linkedinHandle": "yangyue-wang"
   },
   "publisher": {
     "name": "no publisher."

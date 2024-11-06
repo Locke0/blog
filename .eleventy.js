@@ -54,6 +54,7 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
+const mathjaxPlugin = require("eleventy-plugin-mathjax");
 const markdownItAnchor = require("markdown-it-anchor");
 const localImages = require("./third_party/eleventy-plugin-local-images/.eleventy.js");
 const CleanCSS = require("clean-css");
@@ -63,7 +64,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
-
+  eleventyConfig.addPlugin(mathjaxPlugin);
   eleventyConfig.addPlugin(localImages, {
     distPath: "docs",
     assetPath: "/img/remote",
@@ -195,7 +196,7 @@ module.exports = function (eleventyConfig) {
     breaks: true,
     linkify: true,
   }).use(markdownItAnchor, {
-    permalink: true,
+    permalink: false,
     permalinkClass: "direct-link",
     permalinkSymbol: "#",
   });

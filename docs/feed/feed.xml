@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<title>Locke&#39;s Home</title>
+	<title>Locke&#39;s engineering journal</title>
 	<subtitle>Locke&#39;s projects</subtitle>
 	
 	<link href="https://locke0.github.io/blog/feed/feed.xml" rel="self"/>
 	<link href="https://locke0.github.io/blog"/>
-	<updated>2024-01-18T19:00:00-05:00</updated>
+	<updated>2024-01-19T19:00:00-05:00</updated>
 	<id>https://locke0.github.io/blog/posts</id>
 	<author>
 		<name>Yangyue (Locke) Wang</name>
@@ -13,38 +13,202 @@
 	</author>
 	
 	<entry>
-		<title>Orb SLAM 3</title>
-		<link href="https://locke0.github.io/blog/posts/TestPost/"/>
-		<updated>2024-01-18T19:00:00-05:00</updated>
-		<id>https://locke0.github.io/blog/posts/TestPost/</id>
+		<title>Solve the Kaggle Polytope Puzzle</title>
+		<link href="https://locke0.github.io/blog/posts/TheKaggleSantaCompetition/"/>
+		<updated>2024-01-19T19:00:00-05:00</updated>
+		<id>https://locke0.github.io/blog/posts/TheKaggleSantaCompetition/</id>
 		<content type="html">
-		  &lt;p&gt;Coming soon...&lt;/p&gt;
+		  &lt;p&gt;Ok! Let’s try to solve the $25,000 Kaggle Competition: Santa 2023 — The Polytope Permutation Puzzle today…as a beginner.&lt;/p&gt;
+&lt;p&gt;Some context, I have little experience with Kaggle competitions. In fact, this will be the 2nd Kaggle competition I’m participating with the first one being the infamous Titan Challenge. So I’m literally a noob 🤷 (Sorry about the click bait. Oh well, I didn’t win). However, I have been really wanting to get into Kaggle more and get better at deep learning. This is why I’m writing this blog with the intention of showing how I approached a problem in a new or unfamiliar knowledge domain in term of navigating, researching, learning and problem solving.&lt;/p&gt;
+&lt;p&gt;Alright, let’s dive in 😤!&lt;/p&gt;
+&lt;h2 id=&quot;1-overview&quot;&gt;1 Overview&lt;/h2&gt;
+&lt;h3 id=&quot;1.1-problem&quot;&gt;1.1 Problem&lt;/h3&gt;
+&lt;p&gt;First, you have to do some research and understand the problem. Starting with the Overview page, here is what I gathered:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;The Problem&lt;/strong&gt;: solve &lt;strong&gt;cube-like&lt;/strong&gt; puzzles in the &lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;fewest&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt; moves&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Permutation puzzle: comprises
+&lt;ul&gt;
+&lt;li&gt;solution state&lt;/li&gt;
+&lt;li&gt;initial state&lt;/li&gt;
+&lt;li&gt;colors whose arrangements make up states&lt;/li&gt;
+&lt;li&gt;a set of allowed moves&lt;/li&gt;
+&lt;li&gt;The resulting state may differ up to the puzzle’s &lt;code&gt;num_wildcards&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;overall score&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt; is the total number of moves in all of its puzzle solutions (fewest moves)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Submission file format:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$&#92;textrm{For each id, the moves} &#92;in &#92;textrm{allowed moves}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token builtin&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;moves&lt;br&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;r1&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;f1&lt;br&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;f1&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;d0&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;r0&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;f1&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;d0&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;f1&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;d0&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;r0&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;f0&lt;br&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;f1&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;d0&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;d1&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;r0&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;d1&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;f0&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;f1&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;r0&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;f0&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So basically, you have to figure out the transitions between 2 states and each state is a matrix of numbers. Ok, let’s briefly take a look at the dataset.&lt;/p&gt;
+&lt;h3 id=&quot;1.2-dataset&quot;&gt;1.2 Dataset&lt;/h3&gt;
+&lt;p&gt;First, I looked at the&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;puzzle_info.csv:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;puzzle_type&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;allowed_move&lt;/code&gt; - Each move represents a permutation given in array form&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Basically, this file stores what moves are allowed for each puzzle type.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;puzzle.csv&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;id&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;puzzle_type&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;solution_state&lt;/code&gt; - “colors” separated by &lt;code&gt;;&lt;/code&gt; (e.g. a 2 by 2 by 2 cube would have  $4*6 = 24$ elements)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;initial_state&lt;/code&gt; - an arrangement of colors describing the initial statecd cd&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;num_wildcards&lt;/code&gt; - so, nums of difference allowed in the final state (it doesn’t have to be exactly the required final state)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;sample_submission.csv&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;id&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;moves&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This just shows the moves from allowed_moves associated with each puzzle type&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;1.3-first-impression-insights&quot;&gt;1.3 First Impression Insights&lt;/h3&gt;
+&lt;p&gt;Ok! Now let’s digest all that info and redefine our problem/objective to:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Minimize the number of transitions taken to get from state A to state B&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When the problem is presented this way, we can start breaking down the problem into smaller components and steps&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;First&lt;/strong&gt;, we should probably find the proper data structures to store &lt;em&gt;states&lt;/em&gt; and &lt;em&gt;transitions&lt;/em&gt; since the given array or string forms might &lt;em&gt;not&lt;/em&gt; be the most convenient for modeling the $state &#92;rightarrow transition &#92;rightarrow state$ process/relation. From what I remember from my experience in robotics, maybe states can be represented as matrices instead of the given array form.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;However&lt;/strong&gt;, I am still not sure about how to implement the specifics. So, let’s do more research and see what discussions and solutions others have shared online. I started looking at the Code, Discussion page of the competition, YouTube, and Google.&lt;/p&gt;
+&lt;h2 id=&quot;2-%E2%80%9Cliterature-review%E2%80%9D&quot;&gt;2 “Literature Review”&lt;/h2&gt;
+&lt;h3 id=&quot;2.1-a-basic-tutorial-%E2%80%94-getting-started-with-santa-2023.&quot;&gt;&lt;strong&gt;2.1 A Basic Tutorial  — &lt;a href=&quot;https://www.kaggle.com/code/ryanholbrook/getting-started-with-santa-2023&quot;&gt;Getting Started with Santa 2023&lt;/a&gt;.&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;This tutorial covers the basics. I’m glad I took a look at the Code page and this would save me some time. Specifically, it shows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;How to &lt;em&gt;import&lt;/em&gt; and &lt;em&gt;parse&lt;/em&gt; the &lt;code&gt;puzzle_info&lt;/code&gt; and &lt;code&gt;puzzles&lt;/code&gt; into proper formats from corresponding files using pandas.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;How to &lt;em&gt;represent&lt;/em&gt; the puzzle states with &lt;code&gt;numpy.array&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;How to &lt;em&gt;represent&lt;/em&gt; the moves with &lt;code&gt;Permutation&lt;/code&gt; from the &lt;code&gt;sympy.combinatorics&lt;/code&gt; — I had never used it before. If you want to learn more, here is its &lt;a href=&quot;https://docs.sympy.org/latest/modules/combinatorics/permutations.html&quot;&gt;documentation page&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;💡 &lt;strong&gt;Key Takeaways&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Data Structure — &lt;code&gt;Permutation&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;[DEFINITION] — The sympy permutation uses the &lt;strong&gt;indices&lt;/strong&gt; of the elements in the original ordering of the elements in the array instead of the elements themselves.&lt;/li&gt;
+&lt;li&gt;[COMPOSITION] — Permutation takes a 2-line form: &lt;code&gt;[0 1 2 ... n-1] [p(0) p(1) p(2) ... p(n-1)]&lt;/code&gt;, where &lt;code&gt;p(i) = i^p&lt;/code&gt;. The composite of 2 permutations &lt;code&gt;p*q&lt;/code&gt; is the same as &lt;code&gt;i^(p*q) = i^p^q&lt;/code&gt; (with Python’s precedence rule)&lt;/li&gt;
+&lt;li&gt;[DISJOINT CYCLE NOTATION] &lt;strong&gt;—&lt;/strong&gt; [1, 3, 2, 0] represented as (0, 1, 3)(2) meaning 0 → 1 → 3 and 2 stays where it is.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Examples of how permutation can be used in our case:&lt;/p&gt;
+&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;solution_state &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;R&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;G&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;B&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br&gt;initial_state &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;B&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;G&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;R&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br&gt;moves &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;br&gt;    &lt;span class=&quot;token string&quot;&gt;&#39;r&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br&gt;    &lt;span class=&quot;token string&quot;&gt;&#39;s&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;br&gt;move_r &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; moves&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;r&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;# 0-&gt;1, 1-&gt;2, 2-&gt;0&lt;/span&gt;&lt;br&gt;move_rp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Permutation&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;move_r&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br&gt;initial_state_np &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; np&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;asarray&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;initial_state&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;token comment&quot;&gt;# after move_r&lt;/span&gt;&lt;br&gt;resulting_state &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; move_rp&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;initial_state_np&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;token comment&quot;&gt;# ways to inverse moves&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;token comment&quot;&gt;# array form, because the elements in r is target location&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;token comment&quot;&gt;# the orignal locations of the state are labeled as&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;token comment&quot;&gt;# 0, 1, 2, ... by default&lt;/span&gt;&lt;br&gt;move_r_inv &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; np&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;argsort&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;move_r&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;tolist&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;token comment&quot;&gt;# Permutation form, more clear to me personally&lt;/span&gt;&lt;br&gt;move_rp_inv &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; move_rp &lt;span class=&quot;token operator&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;Array vs Permutation — The permutation approach is NOT ONLY cleaner and more intuitive for representing the transitions and states, it also seems to be twice faster according to my profiling:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;array_func&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;initial_state&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; moves&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br&gt;  count &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;br&gt;  r &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; moves&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;r&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br&gt;  s &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; moves&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;s&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br&gt;  r_inv &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; np&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;argsort&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;r&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;tolist&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;br&gt;  &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; count &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;100000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br&gt;    state &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; np&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;asarray&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;initial_state&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br&gt;    state &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; state&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;s&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br&gt;    state &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; state&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;r_inv&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br&gt;    state &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; state&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;tolist&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br&gt;    count &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;per_func&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;initial_state&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; moves&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br&gt;  count &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;br&gt;  r &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; moves&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;r&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br&gt;  s &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; moves&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&#39;s&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br&gt;  rp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Permutation&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;r&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br&gt;  sp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Permutation&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br&gt;  rp_inv &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; rp &lt;span class=&quot;token operator&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;br&gt;  &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; count &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;100000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;br&gt;    state &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; sp&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;initial_state&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br&gt;    state &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; rp_inv&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;state&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br&gt;    count &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Outputs:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;timeit array_func&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;initial_state&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; moves&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;token comment&quot;&gt;# OUTPUT: 595 ms ± 99.1 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;timeit per_func&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;initial_state&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; moves&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;token comment&quot;&gt;# OUTPUT: 306 ms ± 4.5 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;The 3 Puzzle Types — Cube, Wreath, and Globe&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Cube n/n/n: A cube with n layers along each of the 3 face axes (&lt;code&gt;d0, d1&lt;/code&gt; (up and down), &lt;code&gt;f0, f1&lt;/code&gt; (front and back), &lt;code&gt;r0, r1&lt;/code&gt; (right and left)&lt;/li&gt;
+&lt;li&gt;Wreath x/y: 2 rings with x points in left and y in right&lt;/li&gt;
+&lt;li&gt;Globe m/n: a sphere with &lt;code&gt;m&lt;/code&gt; lateral cuts (latitude) and &lt;code&gt;n&lt;/code&gt; radial cuts (longitude). This gives $(m+1)&#92;times(2n)$ positions on a grid:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;m&lt;/code&gt; lateral cuts → &lt;code&gt;m+1&lt;/code&gt; chunks&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;n&lt;/code&gt; radial cuts → &lt;code&gt;2n&lt;/code&gt; when unfolding 2 sides of the sphere — think a world map&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;2.2-others%E2%80%99-approaches&quot;&gt;2.2 Others’ Approaches&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;2.2.1 &lt;a href=&quot;https://www.kaggle.com/competitions/santa-2023/discussion/466399#2605760&quot;&gt;All You Need is DISTANCE&lt;/a&gt; — An ML idea by Alexander Chervov&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;He basically says that we can train a model to predict the distance from any state to the solution state, then choose moves that decreases the distance. Distance function can be defined as the minimal number of moves to connect the two states.&lt;/p&gt;
+&lt;p&gt;To predict the distance, he proposes that we use ML. First, we can create a training set of states and distances. Then, we can train a ML model to predict the distance and infer on any state.&lt;/p&gt;
+&lt;p&gt;The training stage seems to be the biggest challenge of this approach — from using random walk sampling to representing the states in an efficient way (😱The number of states in &lt;a href=&quot;https://www.therubikzone.com/number-of-combinations/&quot;&gt;5x5x5 cube similar to number of atoms in the universe&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Steps of his approach:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;apply all moves to it get new states&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;apply all moves to the states obtained on the previous step,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SELECT only those states which were not found before (i.e. do not go back).&lt;/p&gt;
+&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# get unique elements of the newly obtained states (their hashes)&lt;/span&gt;&lt;br&gt;IX_unique &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; np&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;unique&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;np&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;concatenate&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;vec_hash&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; vec_hash_new &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; return_index&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;br&gt;IX_unique &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; IX_unique&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;IX_unique &lt;span class=&quot;token operator&quot;&gt;&gt;=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;vec_hash&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;vec_hash&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hash those states with simple hash — just matrix multiply by random int64 vector. (side note: float64 caused error with numpy in his experiment)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;States converted from string lists &lt;code&gt;[&#39;A&#39;,&#39;B&#39;…]&lt;/code&gt; to &lt;code&gt;numpy int8&lt;/code&gt; vectors. All the states stored on one matrix (&lt;code&gt;array: np.int8&lt;/code&gt;), with shape: state-length x number of states.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Here are a few &lt;em&gt;more&lt;/em&gt; specific approaches I scraped from the comments of the same discussion:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.kaggle.com/competitions/santa-2023/discussion/466399#2605019&quot;&gt;NN heuristic guiding A* search algorithm&lt;/a&gt; by Vincent B. — Doesn’t work well with larger puzzles&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here is the &lt;a href=&quot;https://www.kaggle.com/competitions/santa-2023/discussion/466399#2605760&quot;&gt;discussion page&lt;/a&gt; if you are interested in more details on the pain points.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.2.2 &lt;a href=&quot;https://www.kaggle.com/competitions/santa-2023/discussion/464415&quot;&gt;Matrix Reformation&lt;/a&gt; — Alexander Chervov&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Alexander proposed another way of representations in addition to the Permutation way given by the organizer.&lt;/p&gt;
+&lt;p&gt;The problem can be translated into:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Find the shortest sequence of matrix multiplication&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;[ ]  &lt;a href=&quot;https://en.wikipedia.org/wiki/Permutation_matrix&quot;&gt;Permutation Matrix&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;3-solution-formation&quot;&gt;3 Solution Formation&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Permutation Group Theory — algebraic structures formed by permutations&lt;/li&gt;
+&lt;li&gt;Cost Function — that quantifies the &amp;quot;distance&amp;quot; or dissimilarity between two permutations&lt;/li&gt;
+&lt;li&gt;Search Algorithms — BFS, DFS, A* to explore the action space&lt;/li&gt;
+&lt;li&gt;Heuristics — for guiding searching and pruning branches&lt;/li&gt;
+&lt;li&gt;Optimization Techniques — parallelization, distributed computing, hardware acceleration&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Experimental&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Reinforcement learning with simulated annealing&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.kaggle.com/code/bprinz/visualizing-all-unique-solution-states&quot;&gt;great visualization here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.kaggle.com/competitions/santa-2023/discussion/468370&quot;&gt;(A+B) + C ≠ A + (B+C) in numpy discussion&lt;/a&gt; + state with NN discussion : Don’t use float64&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.kaggle.com/competitions/santa-2023/discussion/468621&quot;&gt;alex algo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.kaggle.com/code/alexandervc/santa23-cube222-locate-initial-states?scriptVersionId=159376616&amp;amp;cellId=28&quot;&gt;alex notebook solution&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.kaggle.com/competitions/santa-2023/discussion/464415&quot;&gt;matrix reformation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.kaggle.com/code/ryanholbrook/getting-started-with-santa-2023&quot;&gt;getting started&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.kaggle.com/code/alexandervc/santa23-states-distance-generate-save#Moves-%3EPermutation-matrices&quot;&gt;state distance generation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 			
-		</content>
-	</entry>
-	
-	<entry>
-		<title>Is Mind Function Map Legit?</title>
-		<link href="https://locke0.github.io/blog/posts/TestPostTwo/"/>
-		<updated>2024-01-18T19:00:00-05:00</updated>
-		<id>https://locke0.github.io/blog/posts/TestPostTwo/</id>
-		<content type="html">
-		  &lt;p&gt;Coming soon...&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://locke0.github.io/blog/img/remote/robots-factory-1280w.jpg&quot; alt=&quot;robot image&quot;&gt;&lt;/p&gt;
-
-			
-		</content>
-	</entry>
-	
-	<entry>
-		<title>The Canonical Stack Machine Refresher</title>
-		<link href="https://locke0.github.io/blog/posts/TheCanonicalStackMachine/"/>
-		<updated>2024-01-18T19:00:00-05:00</updated>
-		<id>https://locke0.github.io/blog/posts/TheCanonicalStackMachine/</id>
-		<content type="html">
-		  &lt;p&gt;Coming soon...&lt;/p&gt;
-
+				
+				
+				&lt;img src=&quot;https://locke0.github.io/blog/api/ga?v=1&amp;_v=j83&amp;t=pageview&amp;dr=https%3A%2F%2Frss-feed-reader.com&amp;_s=1&amp;dh=locke0.github.io/blog&amp;dp=%2Fposts%2FTheKaggleSantaCompetition%2F&amp;ul=en-us&amp;de=UTF-8&amp;dt=Solve%20the%20Kaggle%20Polytope%20Puzzle&amp;tid=G-ZVJSFTSLL4&quot; width=&quot;1&quot; height=&quot;1&quot; style=&quot;display:none&quot; alt=&quot;&quot;&gt;
 			
 		</content>
 	</entry>
