@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "@ampproject/toolbox-optimizer": "^2.9.0",
+    "@fontsource/literata": "^5.1.0",
     "any-shell-escape": "^0.1.1",
     "browser-sync": "^3.0.3",
     "clean-css": "^4.2.3",

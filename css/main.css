@@ -1,3 +1,5 @@
+@import '@fontsource/literata';
+
 /* Color customization */
 :root {
   --primary: #f0b734;
@@ -684,8 +686,8 @@ dt {
   }
 }
 html {
-  font-family: Inter UI, sans-serif;
-  --font-family: Inter UI, sans-serif;
+  font-family: Literata, serif;
+  --font-family: Literata, serif;
 }
 form {
   padding: 1.5em 1.5em 0;

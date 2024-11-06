@@ -7,4 +7,4 @@ eleventyNavigation:
   order: 3
 ---
 
-An engineer that writes things and hacks stuff. ☕  
+A tinkerer that writes things and hacks stuff. ☕  
