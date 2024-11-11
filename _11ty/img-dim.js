@@ -64,22 +64,7 @@ const processImage = async (img, outputPath) => {
     return;
   }
   if (inputType == "gif") {
-    const videoSrc = await gif2mp4(src);
-    const video = img.ownerDocument.createElement(
-      /AMP/i.test(img.tagName) ? "amp-video" : "video"
-    );
-    [...img.attributes].map(({ name, value }) => {
-      video.setAttribute(name, value);
-    });
-    video.src = videoSrc;
-    video.setAttribute("autoplay", "");
-    video.setAttribute("muted", "");
-    video.setAttribute("loop", "");
-    if (!video.getAttribute("aria-label")) {
-      video.setAttribute("aria-label", img.getAttribute("alt"));
-      video.removeAttribute("alt");
-    }
-    img.parentElement.replaceChild(video, img);
+    // Skip blurry placeholder for GIFs
     return;
   }
   // When the input is a PNG, we keep the fallback image a PNG because JPEG does
@@ -89,11 +74,11 @@ const processImage = async (img, outputPath) => {
   if (img.tagName == "IMG") {
     img.setAttribute("decoding", "async");
     img.setAttribute("loading", "lazy");
-    img.setAttribute(
-      "style",
-      `background-size:cover;` +
-        `background-image:url("${await blurryPlaceholder(src)}")`
-    );
+    // img.setAttribute(
+    //   "style",
+    //   `background-size:cover;` +
+    //     `background-image:url("${await blurryPlaceholder(src)}")`
+    // );
     const doc = img.ownerDocument;
     const picture = doc.createElement("picture");
     const avif = doc.createElement("source");
