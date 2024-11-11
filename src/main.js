@@ -95,25 +95,82 @@ document.documentElement.addEventListener("touchstart", prefetch, {
   passive: true,
 });
 
+// const GA_ID = document.documentElement.getAttribute("ga-id");
+// window.ga =
+//   window.ga ||
+//   function () {
+//     if (!GA_ID) {
+//       return;
+//     }
+//     (ga.q = ga.q || []).push(arguments);
+//   };
+// ga.l = +new Date();
+// ga("create", GA_ID, "auto");
+// ga("set", "transport", "beacon");
+// var timeout = setTimeout(
+//   (onload = function () {
+//     clearTimeout(timeout);
+//     ga("send", "pageview");
+//   }),
+//   1000
+// );
+
+
 const GA_ID = document.documentElement.getAttribute("ga-id");
-window.ga =
-  window.ga ||
-  function () {
-    if (!GA_ID) {
-      return;
+if (GA_ID) {
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', GA_ID);
+
+  // Event tracking for page visibility
+  addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") {
+      gtag('event', 'page_visibility', {
+        'event_category': 'Page Visibility',
+        'event_label': 'Hidden'
+      });
     }
-    (ga.q = ga.q || []).push(arguments);
-  };
-ga.l = +new Date();
-ga("create", GA_ID, "auto");
-ga("set", "transport", "beacon");
-var timeout = setTimeout(
-  (onload = function () {
-    clearTimeout(timeout);
-    ga("send", "pageview");
-  }),
-  1000
-);
+  });
+
+  // Event tracking for button clicks
+  addEventListener(
+    "click",
+    function (e) {
+      var button = e.target.closest("button");
+      if (!button) {
+        return;
+      }
+      gtag('event', 'button_click', {
+        'event_category': 'engagement',
+        'event_label': button.getAttribute("aria-label") || button.textContent
+      });
+    },
+    true
+  );
+
+  // Event tracking for text selection
+  var selectionTimeout;
+  addEventListener(
+    "selectionchange",
+    function () {
+      clearTimeout(selectionTimeout);
+      var text = String(document.getSelection()).trim();
+      if (text.split(/[\s\n\r]+/).length < 3) {
+        return;
+      }
+      selectionTimeout = setTimeout(function () {
+        gtag('event', 'text_selection', {
+          'event_category': 'engagement',
+          'event_label': text
+        });
+      }, 2000);
+    },
+    true
+  );
+}
 
 var ref = +new Date();
 function ping(event) {
@@ -164,40 +221,41 @@ if (/web-vitals.js/.test(sendWebVitals)) {
     });
 }
 
-addEventListener(
-  "click",
-  function (e) {
-    var button = e.target.closest("button");
-    if (!button) {
-      return;
-    }
-    ga("send", {
-      hitType: "event",
-      eventCategory: "button",
-      eventAction: button.getAttribute("aria-label") || button.textContent,
-    });
-  },
-  true
-);
-var selectionTimeout;
-addEventListener(
-  "selectionchange",
-  function () {
-    clearTimeout(selectionTimeout);
-    var text = String(document.getSelection()).trim();
-    if (text.split(/[\s\n\r]+/).length < 3) {
-      return;
-    }
-    selectionTimeout = setTimeout(function () {
-      ga("send", {
-        hitType: "event",
-        eventCategory: "selection",
-        eventAction: text,
-      });
-    }, 2000);
-  },
-  true
-);
+// addEventListener(
+//   "click",
+//   function (e) {
+//     var button = e.target.closest("button");
+//     if (!button) {
+//       return;
+//     }
+//     ga("send", {
+//       hitType: "event",
+//       eventCategory: "button",
+//       eventAction: button.getAttribute("aria-label") || button.textContent,
+//     });
+//   },
+//   true
+// );
+
+// var selectionTimeout;
+// addEventListener(
+//   "selectionchange",
+//   function () {
+//     clearTimeout(selectionTimeout);
+//     var text = String(document.getSelection()).trim();
+//     if (text.split(/[\s\n\r]+/).length < 3) {
+//       return;
+//     }
+//     selectionTimeout = setTimeout(function () {
+//       ga("send", {
+//         hitType: "event",
+//         eventCategory: "selection",
+//         eventAction: text,
+//       });
+//     }, 2000);
+//   },
+//   true
+// );
 
 if (window.ResizeObserver && document.querySelector("header nav #nav")) {
   var progress = document.getElementById("reading-progress");
