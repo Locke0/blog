@@ -833,7 +833,7 @@ video {
 }
 body {
   font-family: var(--font-family);
-  background: #181818;
+  background: #000000;
   color: #eee;
 }
 section {
@@ -921,7 +921,7 @@ main {
   border-top: 0.5px solid #ccc;
 }
 footer {
-  background: rgba(0, 0, 0, 0.8);
+  background: #181818;
   color: #fff;
   padding: 3em;
   text-align: center;
