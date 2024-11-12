@@ -623,7 +623,7 @@ pre {
   font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
 }
 pre:has(code:not([class])) {
-  background: #000000;
+  background: #181818;
 }
 pre code:not([class]) {
   color: #ccc;
@@ -640,7 +640,7 @@ kbd {
 }
 code,
 kbd {
-  background: #000000;
+  background: #181818;
 }
 kbd {
   color: #7ec699;
@@ -1072,7 +1072,7 @@ pre[class*="language-"] {
 }
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #000000;
+  background: #181818;
 }
 :not(pre) > code[class*="language-"] {
   padding: 0.1em;
