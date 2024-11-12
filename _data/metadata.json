@@ -17,9 +17,10 @@
     "url": "https://locke0.github.io/feed/feed.json"
   },
   "author": {
-    "name": "🌐 Yangyue (Locke) Wang",
+    "name": "Yangyue (Locke) Wang",
     "twitterHandle": "Yangyue_Wang",
-    "linkedinHandle": "yangyue-wang"
+    "linkedinHandle": "yangyue-wang",
+    "githubHandle": "locke0"
   },
   "publisher": {
     "name": "no publisher."
