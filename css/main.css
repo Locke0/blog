@@ -1,6 +1,6 @@
 /* Color customization */
 :root {
-  --primary: #46D00F;
+  --primary: #C68A3C;
   --primary-dark: #1e1502;
 }
 
@@ -70,7 +70,7 @@ share-widget button:active {
 }
 
 dialog {
-  background-color: #46D00F;
+  background-color: #66BB6A;;
   position: fixed;
   opacity: 0.9;
   z-index: 1000;
@@ -458,6 +458,7 @@ ul {
 }
 h1 {
   font-size: 2.074rem;
+  color: #66BB6A;
 }
 h1,
 h2 {
@@ -645,7 +646,7 @@ kbd {
   color: #7ec699;
 }
 mark {
-  background: #46D00F;
+  background: #66BB6A;
   padding: 0 0.3em;
 }
 h1,
@@ -661,7 +662,7 @@ h6 {
   font-style: italic;
 }
 a {
-  color: #46D00F;
+  color: #66BB6A;
   text-decoration: none;
 }
 a:hover {
@@ -804,13 +805,13 @@ input[type="submit"][disabled] {
 button:not([disabled]),
 button[type="submit"],
 input[type="submit"] {
-  background: #46D00F;
+  background: #66BB6A;
   color: #181818;
 }
 button:not([disabled]):hover,
 button[type="submit"]:hover,
 input[type="submit"]:hover {
-  background: #46D00F;
+  background: #66BB6A;
   color: #000;
 }
 input[type="color"],
@@ -1100,13 +1101,13 @@ pre[class*="language-"] {
 .token.boolean,
 .token.function,
 .token.number {
-  color: #f08d49;
+  color: #66BB6A;
 }
 .token.class-name,
 .token.constant,
 .token.property,
 .token.symbol {
-  color: #46D00F;
+  color: #66BB6A;
 }
 .token.atrule,
 .token.builtin,
