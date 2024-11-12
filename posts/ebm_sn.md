@@ -8,6 +8,13 @@ layout: layouts/post.njk
 image: /blog/img/remote/water-splash.jpg
 ---
 
+## Key Concepts
+
+- Energy Functions
+- Partition Functions
+- Gradient Descent and Optimization
+- Markov Chain Monte Carlo
+
 ## Overview
 Instead of regressing input x to output y, energy based models predict whether a certain pair of $(x,y)$ fit together.
 
