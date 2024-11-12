@@ -4,7 +4,7 @@
   "domain": "locke0.github.io/blog",
   "description": "projects, ideas, solutions",
   "genre": "Insert a schema.org genre",
-  "googleAnalyticsId": "G-ZVJSFTSLL4",
+  "googleAnalyticsId": "${GOOGLE_ANALYTICS_ID}",
   "sendWebVitals": true,
   "feed": {
     "subtitle": "Locke's projects",

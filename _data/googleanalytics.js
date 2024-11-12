@@ -22,7 +22,7 @@
 const metadata = require("./metadata.json");
 
 module.exports = function () {
-  let id = metadata.googleAnalyticsId;
+  let id = process.env.GOOGLE_ANALYTICS_ID;
   if (/Update me/.test(id)) {
     id = null;
   }
