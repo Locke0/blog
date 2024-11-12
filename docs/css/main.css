@@ -833,7 +833,7 @@ video {
 }
 body {
   font-family: var(--font-family);
-  background: #181818;
+  background: #000000;
   color: #eee;
 }
 section {
@@ -867,13 +867,40 @@ header label {
 }
 header {
   padding: 4.5em 1.5em 3em;
-  width: 37.5em;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
   max-width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 300px;
+}
+
+/* Add background image when image frontmatter exists */
+header[style*="background-image"] {
+  color: white;
+}
+
+header[style*="background-image"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+/* Ensure header content stays above the overlay */
+header > * {
+  position: relative;
+  z-index: 1;
 }
 header p {
   margin-top: 0;
@@ -884,7 +911,7 @@ header nav {
   left: 0;
   width: 100vw;
   padding: 0.375em 1.5em;
-  background: hsla(0, 0%, 100%, 0.9);
+  background: hsla(0, 0%, 90%, 0.9);
   font-weight: 200;
   text-align: right;
 }
@@ -921,7 +948,7 @@ main {
   border-top: 0.5px solid #ccc;
 }
 footer {
-  background: rgba(0, 0, 0, 0.8);
+  background: #181818;
   color: #fff;
   padding: 3em;
   text-align: center;

@@ -67,7 +67,7 @@
     <!-- css is inserted by optimize-html custom plugin -->
   </head>
   <body>
-    <header>
+    <header {% if image %}style="background-image: url('{{ image }}')"{% endif %}>
       <nav>
         <div id="nav">
           <h1><a href="{{ '/' | url }}" title="Homepage">{{ metadata.title }}</a></h1>
@@ -103,10 +103,8 @@
     </main>
 
     <footer>
-      <a href="https://www.linkedin.com/in/{{ metadata.author.linkedinHandle }}">{{ metadata.author.name }}</a>
-      <div style="text-align: center;">
-        <img class="profile-image-footer" src="/blog/img/remote/profile.jpg" alt="Profile Image">
-      </div>
+      <a href="https://www.linkedin.com/in/{{ metadata.author.linkedinHandle }}">🌐 My LinkedIn</a>
+      <a href="https://github.com/{{ metadata.author.githubHandle }}"> 🐈‍⬛ My GitHub ^ↀᴥↀ^</a>
     </footer>
 
     <!-- Current page: {{ page.url | url }} -->
