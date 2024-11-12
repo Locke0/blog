@@ -683,9 +683,20 @@ dt {
     display: table-cell;
   }
 }
+@font-face {
+  font-family: "FacultyGlyphic";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("/blog/fonts/FacultyGlyphic-Regular.woff2") format("woff2"); /* If you have woff2 version */
+  /* url("/blog/fonts/FacultyGlyphic-Regular.ttf") format("truetype"), */
+}
+.fonts-loaded {
+  font-family: "FacultyGlyphic", Helvetica, sans-serif;
+}
 html {
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  --font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: "FacultyGlyphic", Helvetica, sans-serif;
+  --font-family: "FacultyGlyphic", Helvetica, sans-serif;
 }
 form {
   padding: 1.5em 1.5em 0;

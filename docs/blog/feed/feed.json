@@ -12,7 +12,7 @@
       "id": "https://locke0.github.io/blog/posts/ebm_sn/",
       "url": "https://locke0.github.io/blog/posts/ebm_sn/",
       "title": "Energy Based Models Study Notes",
-      "content_html": "<ol>\n<li>\n<p>$P(x) \\geq 0 \\ $ is non-negative</p>\n</li>\n<li>\n<p>$\\sum_x P(x) = 1 \\ $ OR $\\ \\int_x P(x) dx = 1 \\ $ if continuous is normalized</p>\n</li>\n</ol>\n",
+      "content_html": "<h2 id=\"overview\">Overview</h2>\n<p>Instead of regressing input x to output y, energy based models predict whether a certain pair of $(x,y)$ fit together.</p>\n<p>Constraints:</p>\n<ol>\n<li>\n<p>$P(x) \\geq 0 \\ $ is non-negative</p>\n</li>\n<li>\n<p>$\\sum_x P(x) = 1 \\ $ OR $\\ \\int_x P(x) dx = 1 \\ $ if continuous is normalized</p>\n</li>\n</ol>\n",
       "date_published": "2024-11-11T19:00:00-05:00"
     }
   ]

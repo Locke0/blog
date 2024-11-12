@@ -18,7 +18,10 @@
 		<updated>2024-11-11T19:00:00-05:00</updated>
 		<id>https://locke0.github.io/blog/posts/ebm_sn/</id>
 		<content type="html">
-		  &lt;ol&gt;
+		  &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Instead of regressing input x to output y, energy based models predict whether a certain pair of $(x,y)$ fit together.&lt;/p&gt;
+&lt;p&gt;Constraints:&lt;/p&gt;
+&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;$P(x) &#92;geq 0 &#92; $ is non-negative&lt;/p&gt;
 &lt;/li&gt;
