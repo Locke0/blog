@@ -7,3 +7,7 @@ tags: Coming Soon
 layout: layouts/post.njk
 image: /blog/img/remote/water-splash.jpg
 ---
+
+1. $P(x) \geq 0 \ $ is non-negative
+
+2. $\sum_x P(x) = 1 \ $ OR $\ \int_x P(x) dx = 1 \ $ if continuous is normalized
