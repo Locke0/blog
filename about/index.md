@@ -8,4 +8,4 @@ eleventyNavigation:
   order: 3
 ---
 
-A tinkerer that writes things and hacks stuff. ☕  
+A tinkerer that writes stuff and hacks things. ☕  
