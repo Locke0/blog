@@ -104,8 +104,10 @@
     </main>
 
     <footer>
+      {% block footer %}
       <a href="https://www.linkedin.com/in/{{ metadata.author.linkedinHandle }}">🌐 My LinkedIn</a>
       <a href="https://github.com/{{ metadata.author.githubHandle }}"> 🐈‍⬛ My GitHub ^ↀᴥↀ^</a>
+      {% endblock %}
     </footer>
 
     <!-- Current page: {{ page.url | url }} -->

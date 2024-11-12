@@ -1,5 +1,5 @@
 ---
-title: Energy Based Models Study Notes
+title: Composable Energy Based Models Study Notes
 description: how well can EBMs learn representations?
 date: 2024-11-12
 scheduled: 2024-11-12
@@ -16,9 +16,9 @@ image: /blog/img/remote/water-splash.jpg
 - Markov Chain Monte Carlo
 
 ## Overview
-Instead of regressing input x to output y, energy based models predict whether a certain pair of  fit together.
+Instead of regressing input x to output y, energy based models predict whether a certain pair or configuration of variables fit together. Energy functions assign low energy to likely configurations and high energy to unlikely ones.
 
-## Definition
+## Definitions
 $\mathcal{F}: \mathcal{X} \times \mathcal{Y} \rightarrow \mathbb{R}$
 - $\mathcal{F}(x,y)$: describes the level of dependency between x and y
 
@@ -58,3 +58,9 @@ Constraints:
 1. $P(x) \geq 0 \ $ is non-negative
 
 2. $\sum_x P(x) = 1 \ $ OR $\ \int_x P(x) dx = 1 \ $ if continuous is normalized
+
+## Applications
+1. Video prediction
+
+
+

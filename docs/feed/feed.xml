@@ -13,7 +13,7 @@
 	</author>
 	
 	<entry>
-		<title>Energy Based Models Study Notes</title>
+		<title>Composable Energy Based Models Study Notes</title>
 		<link href="https://locke0.github.io/blog/posts/ebm_sn/"/>
 		<updated>2024-11-11T19:00:00-05:00</updated>
 		<id>https://locke0.github.io/blog/posts/ebm_sn/</id>
@@ -26,8 +26,8 @@
 &lt;li&gt;Markov Chain Monte Carlo&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;overview&quot;&gt;Overview&lt;/h2&gt;
-&lt;p&gt;Instead of regressing input x to output y, energy based models predict whether a certain pair of  fit together.&lt;/p&gt;
-&lt;h2 id=&quot;definition&quot;&gt;Definition&lt;/h2&gt;
+&lt;p&gt;Instead of regressing input x to output y, energy based models predict whether a certain pair or configuration of variables fit together. Energy functions assign low energy to likely configurations and high energy to unlikely ones.&lt;/p&gt;
+&lt;h2 id=&quot;definitions&quot;&gt;Definitions&lt;/h2&gt;
 &lt;p&gt;$&#92;mathcal{F}: &#92;mathcal{X} &#92;times &#92;mathcal{Y} &#92;rightarrow &#92;mathbb{R}$&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;$&#92;mathcal{F}(x,y)$: describes the level of dependency between x and y&lt;/li&gt;
@@ -66,6 +66,10 @@ These latent variables can provide auxiliary information.&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;$&#92;sum_x P(x) = 1 &#92; $ OR $&#92; &#92;int_x P(x) dx = 1 &#92; $ if continuous is normalized&lt;/p&gt;
 &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;applications&quot;&gt;Applications&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Video prediction&lt;/li&gt;
 &lt;/ol&gt;
 
 			
