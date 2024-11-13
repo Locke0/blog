@@ -1,6 +1,6 @@
 /* Color customization */
 :root {
-  --primary: #C68A3C;
+  --primary: #66BB6A;
   --primary-dark: #1e1502;
 }
 
@@ -609,7 +609,7 @@ th {
   vertical-align: top;
 }
 thead th {
-  border-bottom: 1px solid #f9c412;
+  border-bottom: 1px solid #66BB6A;
 }
 table {
   display: table;
@@ -646,7 +646,8 @@ kbd {
   color: #7ec699;
 }
 mark {
-  background: #66BB6A;
+  background: inherit;
+  color: #66BB6A;
   padding: 0 0.3em;
 }
 h1,
@@ -1159,10 +1160,6 @@ dd + dt {
 
 blockquote {
   border-left: 1px solid var(--primary);
-}
-
-mark {
-  background: var(--primary);
 }
 
 a {
