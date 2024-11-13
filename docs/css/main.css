@@ -1,6 +1,6 @@
 /* Color customization */
 :root {
-  --primary: #C68A3C;
+  --primary: #66BB6A;
   --primary-dark: #1e1502;
 }
 
@@ -609,7 +609,7 @@ th {
   vertical-align: top;
 }
 thead th {
-  border-bottom: 1px solid #f9c412;
+  border-bottom: 1px solid #66BB6A;
 }
 table {
   display: table;
@@ -623,7 +623,7 @@ pre {
   font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
 }
 pre:has(code:not([class])) {
-  background: #000000;
+  background: #181818;
 }
 pre code:not([class]) {
   color: #ccc;
@@ -640,14 +640,14 @@ kbd {
 }
 code,
 kbd {
-  background: #000000;
+  background: #181818;
 }
 kbd {
   color: #7ec699;
 }
 mark {
-  background: #66BB6A;
-  padding: 0 0.3em;
+  background: inherit;
+  color: #66BB6A;
 }
 h1,
 h2,
@@ -1072,7 +1072,7 @@ pre[class*="language-"] {
 }
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #000000;
+  background: #181818;
 }
 :not(pre) > code[class*="language-"] {
   padding: 0.1em;
@@ -1159,10 +1159,6 @@ dd + dt {
 
 blockquote {
   border-left: 1px solid var(--primary);
-}
-
-mark {
-  background: var(--primary);
 }
 
 a {
