@@ -39,7 +39,7 @@ date: Last Modified
 <div class="professional-statement">
   <div class="body">
     <div style="text-align: left;" class="intro">
-          <p>I'm a software engineer with a master's degree 🎓 in <i>Electrical & Systems Engineering</i> from <i>University of Pennsylvania</i>. My expertise spans multiple domains including:</p>
+          <p>I'm a software engineer with a master's degree 🎓 in <i>Electrical & Systems Engineering</i> from <i>University of Pennsylvania</i> with experience in:</p>
             <ul style="list-style: none; padding-left: 20px;">
               <li style="margin: 10px 0; border-left: 3px solid #ffffff; padding-left: 15px;">Autonomous Robotics 🏎️ using ROS/ROS2</li>
               <li style="margin: 10px 0; border-left: 3px solid #ffffff; padding-left: 15px;">AR/VR Game Development 📺 with Unity and ASP.NET</li>
@@ -55,13 +55,13 @@ date: Last Modified
     </div>
   </div>
 
-
-  <div id="posts">
-    <h4>Entries</h4>
-    {% set postslist = collections.posts %}
-    {% include "postslist.njk" %}
-  </div>
-
+  {% set postslist = collections.posts %}
+  {% if postslist | length > 0 %}
+    <div id="posts">
+      <h4>Entries</h4>
+      {% include "postslist.njk" %}
+    </div>
+  {% endif %}
 
   <div id="publications">
     <h4>Publications</h4>

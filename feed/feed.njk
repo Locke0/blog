@@ -9,7 +9,11 @@ eleventyExcludeFromCollections: true
 	{% set absoluteUrl %}{{ metadata.feed.path | url | absoluteUrl(metadata.url) }}{% endset %}
 	<link href="{{ absoluteUrl }}" rel="self"/>
 	<link href="{{ metadata.url }}"/>
-	<updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
+  {% if collections.posts | length > 0 %}
+	  <updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
+  {% else %}
+	  <updated>{{ "1970-01-01T00:00:00Z" }}</updated>
+  {% endif %}
 	<id>{{ metadata.feed.id }}</id>
 	<author>
 		<name>{{ metadata.author.name }}</name>

@@ -21,5 +21,6 @@
 
 module.exports = function () {
   // YOLO.
-  return /serve|watch/.test(process.argv.join());
+  return false;  // isDev=false
+  // return /serve|watch/.test(process.argv.join());
 };
