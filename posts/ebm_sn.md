@@ -3,7 +3,7 @@ title: Composable Energy Based Models Study Notes
 description: how well can EBMs learn representations?
 date: 2024-11-13
 scheduled: 2024-12-13
-tags: Coming Soon
+tags: posts
 layout: layouts/post.njk
 image: /blog/img/remote/water-splash.jpg
 ---

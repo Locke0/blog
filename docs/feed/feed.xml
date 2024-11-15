@@ -6,11 +6,262 @@
 	<link href="https://locke0.github.io/blog/feed/feed.xml" rel="self"/>
 	<link href="https://locke0.github.io/blog"/>
   
-	  <updated>1970-01-01T00:00:00Z</updated>
+	  <updated>2024-11-12T19:00:00-05:00</updated>
   
 	<id>https://locke0.github.io/blog/posts</id>
 	<author>
 		<name>Yangyue (Locke) Wang</name>
 		<email></email>
 	</author>
+	
+	<entry>
+		<title>Composable Energy Based Models Study Notes</title>
+		<link href="https://locke0.github.io/blog/posts/ebm_sn/"/>
+		<updated>2024-11-12T19:00:00-05:00</updated>
+		<id>https://locke0.github.io/blog/posts/ebm_sn/</id>
+		<content type="html">
+		  &lt;ul&gt;
+&lt;li&gt;[ ] Check EBM math&lt;/li&gt;
+&lt;li&gt;[ ] Check training and sampling&lt;/li&gt;
+&lt;li&gt;[ ] Check compositional modeling&lt;/li&gt;
+&lt;li&gt;[ ] Explain MCMC&lt;/li&gt;
+&lt;li&gt;[ ] Check applications&lt;/li&gt;
+&lt;li&gt;[ ] Add sample code experiments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;1-key-concepts&quot;&gt;1 Key Concepts&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Concept&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Energy Function&lt;/td&gt;
+&lt;td&gt;A scalar function that assigns low values to likely configurations and high values to unlikely ones&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Partition Function&lt;/td&gt;
+&lt;td&gt;Normalizing constant Z that ensures probability distribution sums/integrates to 1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Gradient Descent&lt;/td&gt;
+&lt;td&gt;Optimization method used to find local minima of energy function during inference&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MCMC&lt;/td&gt;
+&lt;td&gt;Sampling method used to approximate expectations and generate samples from model&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;2-ebm-overview&quot;&gt;2 EBM Overview&lt;/h3&gt;
+&lt;p&gt;&lt;mark&gt;Energy based models&lt;/mark&gt; predict compatibility between variable configurations rather than direct input-output mappings. The core idea is that energy functions assign low energy to likely configurations and high energy to unlikely ones.&lt;/p&gt;
+&lt;p&gt;Compositional generation is a more tractable way to represent high dimensional distributions by modeling a set of simpler factors.&lt;/p&gt;
+&lt;p&gt;e.g. have two models learn the 2 factors of the data distribution.&lt;/p&gt;
+&lt;p&gt;Key features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;Implicit Generation&lt;/em&gt;&lt;/strong&gt;: Sample generation via MCMC from energy function&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;Compositionality&lt;/em&gt;&lt;/strong&gt;: Multiple energy functions can be combined&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;Flexibility&lt;/em&gt;&lt;/strong&gt;: Can model diverse probability distributions and data types&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;3-energy-functions-%26-optimization&quot;&gt;3 Energy Functions &amp;amp; Optimization&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Energy Function Mapping:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Domain: Configurations in $&#92;mathcal{X} &#92;times &#92;mathcal{Y}$&lt;/li&gt;
+&lt;li&gt;Range: Real numbers $&#92;mathbb{R}$&lt;/li&gt;
+&lt;li&gt;Formal notation: $&#92;mathcal{F}: &#92;mathcal{X} &#92;times &#92;mathcal{Y} &#92;rightarrow &#92;mathbb{R}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Prediction Process:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Goal: Find minimum energy configurations&lt;/li&gt;
+&lt;li&gt;Formula: $&#92;check{y} = &#92;arg&#92;min_y &#92;mathcal{F}(x,y)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Probability Connection:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Via Boltzmann distribution&lt;/li&gt;
+&lt;li&gt;Formula: $y &#92;sim p(x,y) &#92;propto e^{-E_{&#92;theta}(x,y)}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;4-latent-variable-models&quot;&gt;4 Latent Variable Models&lt;/h3&gt;
+&lt;p&gt;Step 1: Joint Optimization&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Variables: z (latent), x (input), y (output)&lt;/li&gt;
+&lt;li&gt;Formula: $&#92;check{y}, &#92;check{z} = &#92;arg&#92;min_{y,z} E(x,y,z)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Step 2: Free Energy Formulation&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Definition: $F_{&#92;beta}(x,y) = -&#92;frac{1}{&#92;beta} &#92;log &#92;int_z &#92;exp(-&#92;beta E(x,y,z))$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Step 3: Limiting Behavior ($&#92;beta &#92;rightarrow &#92;infty$)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Energy: $F_{&#92;infty}(x,y) = &#92;arg&#92;min_z E(x,y,z)$&lt;/li&gt;
+&lt;li&gt;Prediction: $&#92;check{y} = &#92;arg&#92;min_y F(x,y)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;5-training-and-sampling&quot;&gt;5 Training and Sampling&lt;/h3&gt;
+&lt;p&gt;You can use gradient of the funciton to guide the sampling process. However, this approach only allows you to sample a single probability mode rather than sampling from the probability distribution encoded by the energy function.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Component&lt;/th&gt;
+&lt;th&gt;Formula&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;NLL Loss&lt;/td&gt;
+&lt;td&gt;$L_NLL(D) = E_z~D[E_{&#92;theta}(z)] + &#92;log &#92;int e^{-E_{&#92;theta}(z)} dz$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Gradient&lt;/td&gt;
+&lt;td&gt;$&#92;nabla_{&#92;theta} L_NLL(D) = E_z~D[&#92;nabla_{&#92;theta} E_{&#92;theta}(z)] - E_z~p_{&#92;theta}(z)[&#92;nabla_{&#92;theta} E_{&#92;theta}(z)]$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&quot;maximum-likelihood-training&quot;&gt;Maximum Likelihood Training&lt;/h4&gt;
+&lt;p&gt;MLE objective:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$L_NLL(D) = E_z~D[E_{&#92;theta}(z)] - E_z~p_{&#92;theta}(z)[E_{&#92;theta}(z)]$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;langevin-dynamics-sampling&quot;&gt;Langevin Dynamics Sampling&lt;/h4&gt;
+&lt;p&gt;Instead of using gradient descent to find the low energy point, we can use Langevin dynamics to sample from the energy landscape.&lt;/p&gt;
+&lt;p&gt;Its iterative nature makes it slower than GANs or VAEs, but it can generalize to a new energy landscape.&lt;/p&gt;
+&lt;p&gt;Update rule:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$z_t = z_{t-1} - λ &#92;nabla_z E_{&#92;theta}(z_{t-1}) + &#92;sqrt{2λ} &#92;xi, &#92;xi &#92;sim N(0,1)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;learning-energy-functions&quot;&gt;Learning Energy Functions&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;[ ] Add the equation of gradient of MLE training for a point x here at 11:50&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=kFchGKIrGzY&quot;&gt;https://www.youtube.com/watch?v=kFchGKIrGzY&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://atcold.github.io/NYU-DLSP20/en/week07/07-1/&quot;&gt;https://atcold.github.io/NYU-DLSP20/en/week07/07-1/&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;practical-considerations&quot;&gt;Practical Considerations&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Use replay buffers to improve sample diversity&lt;/li&gt;
+&lt;li&gt;Apply regularization to smooth energy landscapes&lt;/li&gt;
+&lt;li&gt;Consider annealed landscapes for high-dimensional problems&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;6-compositional-modeling&quot;&gt;6 Compositional Modeling&lt;/h3&gt;
+&lt;h4 id=&quot;model-composition&quot;&gt;Model Composition&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Logical composition of energy landscapes&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Probability combinations via products and mixtures&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hierarchical composition for complex tasks&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;[ ] Add math for composition here&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;7-applications&quot;&gt;7 Applications&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Computer Vision: Scene understanding, image generation&lt;/li&gt;
+&lt;li&gt;Robotics: Planning, constraint satisfaction&lt;/li&gt;
+&lt;li&gt;Foundation Models: Vision-language tasks, hierarchical planning&lt;/li&gt;
+&lt;li&gt;Scientific Applications: Inverse design, protein synthesis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;diffusion-models&quot;&gt;Diffusion Models&lt;/h4&gt;
+&lt;h3 id=&quot;8-ebm-experiments&quot;&gt;8 EBM Experiments&lt;/h3&gt;
+&lt;h3 id=&quot;9-future-directions&quot;&gt;9 Future Directions&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Scale to more complex data distributions&lt;/li&gt;
+&lt;li&gt;Develop improved sampling techniques&lt;/li&gt;
+&lt;li&gt;Expand applications in sciences and engineering&lt;/li&gt;
+&lt;li&gt;Enhance zero-shot generalization capabilities&lt;/li&gt;
+&lt;/ul&gt;
+
+			
+		</content>
+	</entry>
+	
+	<entry>
+		<title>SpikeGPT Study Notes</title>
+		<link href="https://locke0.github.io/blog/posts/spike_gpt/"/>
+		<updated>2024-11-12T19:00:00-05:00</updated>
+		<id>https://locke0.github.io/blog/posts/spike_gpt/</id>
+		<content type="html">
+		  &lt;ul&gt;
+&lt;li&gt;[ ] Compatibility between RWKV and LNNs? STDP and LNNs, SMiRL with LNNs?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;RWKV Unit with MatMul-free Language Model.&lt;/p&gt;
+&lt;p&gt;RWKV unit can serve as an intermediate representation between contextual embedding model and the routine tracking layer?&lt;/p&gt;
+&lt;p&gt;RWKV for Long-Range Routine Modeling and Context Integration&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Routine Recognition: Use RWKV to balance long-range dependencies in work sessions, capturing both immediate and past information for stable routine reinforcement?&lt;/li&gt;
+&lt;li&gt;Surprise-Driven Memory Reset: In cases of significant deviation (high surprise), RWKV’s receptance mechanism can reset memory, allowing the system to learn new routines and detect emerging patterns?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- !Research STDP and double check this --&gt;
+&lt;p&gt;STDP adjusts weights based on the timing difference between pre-synaptic and post-synaptic spikes. To model this with LNNs, we can define a state-based palsticity rule that relies on time-based state adjustments rather than explicit weight updates.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Time-Based State Plasticity:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Define a time-based state $&#92;Delta h_t$ that responds to surprise, adjusting the state based on routine deviation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;We can mimic the STDP process by making $&#92;Delta h_t$ a function of the surprise level $S$:&lt;/p&gt;
+&lt;p&gt;$$&#92;Delta h_t = f(S) &#92;cdot (x_t - h_t)$$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Adaptive Routine Learning with Surprise Detection&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;When $S$ is low $&#92;rightarrow$ $h_t$ remains close to $x_t$, stabilizing the routine response&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Lessons for Spiking Neural Networks:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Treating SNNs as state-space models: linear recurrence is critical&lt;/li&gt;
+&lt;li&gt;Forget gates are essential for handling memory-limited state variables&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Lessons for Linear RNNs&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Static sparsity seems easier to deal with than dynamic sparsity&lt;/li&gt;
+&lt;li&gt;Forget gates are eseential for handling memory-limited state variables&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;LFMs&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Liquid Time-Constant Units&lt;/li&gt;
+&lt;li&gt;Deep Signal Processing Layers - performs operations akin to Fourier Transforms and wavelet transforms, enabling hte model to capture frequency information effectively&lt;br&gt;
+$$[&lt;br&gt;
+y = F^{-1}(F(x) &#92;odot W)&lt;br&gt;
+]$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;where ( F ) represents the Fourier transform, ( &#92;odot ) denotes element-wise multiplication, and ( W ) is a learnable weight matrix.&lt;/p&gt;
+&lt;p&gt;State-Space Models&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;State Transition Equations&lt;br&gt;
+$$[&lt;br&gt;
+s_t = f(s_{t-1}, x_t)&lt;br&gt;
+]$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here, ( s_t ) is the state at time t, ( f ) is a function that updates the state given the previous state and current input, and ( x_t ) is the input at time t.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Observation Equations&lt;br&gt;
+$$&lt;br&gt;
+[&lt;br&gt;
+y_t = g(s_t)&lt;br&gt;
+]&lt;br&gt;
+$$&lt;br&gt;
+Here, ( y_t ) is the observation at time t, and ( g ) is a function that maps the state to the output.&lt;/li&gt;
+&lt;/ul&gt;
+
+			
+		</content>
+	</entry>
 </feed>

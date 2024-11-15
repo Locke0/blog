@@ -3,7 +3,7 @@ title: Surprise Minimizing Reinforcement Learning Study Notes
 description: are surprise and curiosity all we need?
 date: 2024-11-13
 scheduled: 2024-12-13
-tags: Coming Soon
+tags: notes
 layout: layouts/post.njk
 image: /blog/img/remote/water-splash.jpg
 ---

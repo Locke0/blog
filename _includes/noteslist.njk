@@ -1,0 +1,10 @@
+<ul>
+{% for note in noteslist | reverse %}
+  <li>
+    <a href="{{ note.url | url }}">{% if note.data.title %}{{ note.data.title }}{% else %}<code>{{ note.url }}</code>{% endif %}</a>
+    <span>| {{ note.data.tags[1] }} | </span>
+    <time  datetime="{{ note.date | htmlDateString }}">{{ note.date | readableDate }}</time>
+  </li>
+{% endfor %}
+</ul>
+

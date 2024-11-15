@@ -148,6 +148,11 @@ module.exports = function (eleventyConfig) {
       "dd LLL yyyy"
     );
   });
+  eleventyConfig.addFilter("filterTagList", function(collection, tag) {
+    return collection.filter(item => {
+      return item.data.tags && item.data.tags.includes(tag);
+    });
+  });
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   eleventyConfig.addFilter("htmlDateString", (dateObj) => {
@@ -173,6 +178,9 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("posts", function (collectionApi) {
     return collectionApi.getFilteredByTag("posts");
+  });
+  eleventyConfig.addCollection("notes", function (collectionApi) {
+    return collectionApi.getFilteredByTag("notes");
   });
   eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"));
   eleventyConfig.addPassthroughCopy("img");

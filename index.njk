@@ -63,6 +63,15 @@ date: Last Modified
     </div>
   {% endif %}
 
+  <!-- Notes Section -->
+  {% set noteslist = collections.notes %}
+  {% if noteslist | length > 0 %}
+    <div id="notes">
+      <h4>Notes</h4>
+      {% include "noteslist.njk" %}
+    </div>
+  {% endif %}
+
   <div id="publications">
     <h4>Publications</h4>
     <ul>
