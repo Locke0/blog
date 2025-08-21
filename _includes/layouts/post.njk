@@ -12,18 +12,8 @@ templateClass: tmpl-post
    <aside> {{ wPerMinute | round }} min read. </aside>
 {% endblock %}
 
-{% set shareUrl = metadata.url + page.url %}
-
 {% block article %}
 {{ content | safe }}
-
-
-
-<share-widget>
-  <button aria-label="Share" onclick="copyShareUrl(this, '{{ shareUrl | safe }}')">
-    <div></div>
-  </button>
-</share-widget>
 
 <script type="application/ld+json">
 {

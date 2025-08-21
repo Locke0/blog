@@ -976,13 +976,17 @@ footer {
   margin-right: auto;
 }
 
-/* Footer content container */
-footer > * {
-  max-width: 37.5em;
-  margin: 0 auto;
-  padding: 0 1.5em;
-  text-align: center;
+
+
+/* Responsive footer width to match body content */
+@media (min-width: 37.5em) {
+  footer {
+    width: 35em;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
+
 footer nav a img {
   vertical-align: middle;
 }
@@ -1213,9 +1217,9 @@ footer {
   margin-top: 2rem; /* Space above footer */
   border-top: 1px solid #ffffff;
   text-align: center;
-  width: 35em; /* Match article width */
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%; /* Full width on mobile */
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* Footer content container */
