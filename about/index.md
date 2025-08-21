@@ -1,7 +1,7 @@
 ---
 title: About
 layout: layouts/post.njk
-image: /blog/img/remote/cartoon-robot-in-a-shop-1280w.jpg
+image: /blog/img/remote/water-splash.jpg
 eleventyNavigation:
   key: About
   order: 2

@@ -35,9 +35,9 @@ header nav {
   --main-width: calc(100vw - 3em);
 }
 
-@media (min-width: 37.5em) {
+@media (min-width: 45em) {
   :root {
-    --main-width: calc(37.5em - 3em);
+    --main-width: calc(45em - 3em);
   }
 }
 /*! purgecss end ignore */
@@ -278,14 +278,17 @@ html {
 body {
   margin: 0;
   letter-spacing: 0.05em;
+  color: #ffffff;
 }
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
+  color: #ffffff;
 }
 /* For headings or emphasis */
 h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.08em;  /* 8% of font size */
+  color: #ffffff;
 }
 
 /* For all caps text */
@@ -300,6 +303,7 @@ hr {
 pre {
   font-family: monospace, monospace;
   font-size: 1em;
+  color: #e6e6e6;
 }
 a {
   background-color: transparent;
@@ -318,6 +322,7 @@ kbd,
 samp {
   font-family: monospace, monospace;
   font-size: 1em;
+  color: #e6e6e6;
 }
 small {
   font-size: 80%;
@@ -712,6 +717,31 @@ dt {
   src: url("/blog/fonts/FacultyGlyphic-Regular.woff2") format("woff2"); /* If you have woff2 version */
   /* url("/blog/fonts/FacultyGlyphic-Regular.ttf") format("truetype"), */
 }
+
+/* Ubuntu font for better readability in blog posts */
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: local("Ubuntu"), url("https://fonts.gstatic.com/s/ubuntu/v20/4iCs6KVjbNBYlgo6eA.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: local("Ubuntu Medium"), url("https://fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCjC3jvWyNL4U.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: local("Ubuntu Bold"), url("https://fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCxCvjvWyNL4U.woff2") format("woff2");
+}
 .fonts-loaded {
   font-family: "FacultyGlyphic", Helvetica, sans-serif;
 }
@@ -971,7 +1001,7 @@ footer {
   padding: 2rem 0; /* Vertical padding for full-width background */
   margin-top: 2rem; /* Space above footer */
   border-top: 1px solid #ffffff;
-  width: 35em; /* Match article width */
+  width: 45em; /* Match article width */
   margin-left: auto;
   margin-right: auto;
 }
@@ -979,9 +1009,9 @@ footer {
 
 
 /* Responsive footer width to match body content */
-@media (min-width: 37.5em) {
+@media (min-width: 45em) {
   footer {
-    width: 35em;
+    width: 45em;
     margin-left: auto;
     margin-right: auto;
   }
@@ -993,12 +1023,25 @@ footer nav a img {
 footer nav,
 footer p {
   font-size: 90%;
+  color: #e6e6e6;
 }
 article {
   max-width: 100%;
   padding: 1.5em;
-  width: 37.5em;
+  width: 200em;
   margin: 0 auto;
+  font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 4px;
+  font-weight: 240;
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+/* Ensure code blocks maintain monospace font */
+article pre,
+article code {
+  font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
+  color: #e6e6e6;
 }
 ol,
 ul {
@@ -1032,7 +1075,7 @@ blockquote {
 blockquote footer {
   background: none;
   display: block;
-  color: #ccc;
+  color: #e6e6e6;
   padding: 0.75em 0;
   font-size: 90%;
   text-align: start;
@@ -1050,7 +1093,7 @@ figure img {
 }
 code[class*="language-"],
 pre[class*="language-"] {
-  color: #ccc;
+  color: #e6e6e6;
   background: none;
   font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
   text-align: left;
@@ -1083,6 +1126,7 @@ pre[class*="language-"] {
   padding: 0.1em;
   border-radius: 0.3em;
   white-space: normal;
+  color: #e6e6e6;
 }
 .token.block-comment,
 .token.cdata,
@@ -1224,9 +1268,30 @@ footer {
 
 /* Footer content container */
 footer > * {
-  max-width: 37.5em;
+  max-width: 45em;
   margin: 0 auto;
   padding: 0 1.5em;
   text-align: center;
+}
+
+/* Profile image styling for homepage */
+.profile-section {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
