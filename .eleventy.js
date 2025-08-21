@@ -172,7 +172,14 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection("posts", function (collectionApi) {
-    return collectionApi.getFilteredByTag("posts");
+    const isDevelopment = require("./_data/isdevelopment.js")();
+    const posts = collectionApi.getFilteredByTag("posts");
+    if (isDevelopment) {
+      return posts;
+    }
+    return posts.filter((p) => {
+      return !p.data.tags || !p.data.tags.includes("Coming Soon");
+    });
   });
   eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"));
   eleventyConfig.addPassthroughCopy("img");

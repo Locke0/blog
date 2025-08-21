@@ -19,7 +19,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-const minify = require("html-minifier").minify;
+const minify = require("html-minifier-terser").minify;
 const AmpOptimizer = require("@ampproject/toolbox-optimizer");
 const ampOptimizer = AmpOptimizer.create({
   blurredPlaceholders: true,
@@ -54,29 +54,7 @@ const purifyCss = async (rawContent, outputPath) => {
       "@font-face {font-display:optional;"
     );
 
-    const purged = await new PurgeCSS().purge({
-      content: [
-        {
-          raw: rawContent,
-          extension: "html",
-        },
-      ],
-      css: [
-        {
-          raw: before,
-        },
-      ],
-      /*extractors: [
-        {
-          extractor: require("purge-from-html").extract,
-          extensions: ["html"],
-        },
-      ],*/
-      fontFace: true,
-      variables: true,
-    });
-
-    const after = csso.minify(purged[0].css).css;
+    const after = csso.minify(before).css; // Pass 'before' directly to csso
     //console.log("CSS reduction", before.length - after.length);
 
     content = content.replace("</head>", `<style>${after}</style></head>`);

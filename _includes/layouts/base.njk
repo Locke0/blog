@@ -79,9 +79,9 @@
         </div>
         <div id="reading-progress" aria-hidden="true"></div>
       </nav>
-      <h1>{{ title }}</h1>
-      <i> {{description}} </i>
+      
       {% block extraArticleHeader %}{% endblock %}
+                  
       <dialog id="message"></dialog>
       {# {% if googleanalytics %}
       <noscript>
@@ -105,11 +105,11 @@
 
     <footer>
       {% block footer %}
-      <a href="https://www.linkedin.com/in/{{ metadata.author.linkedinHandle }}">🌐 My LinkedIn</a>
-      <a href="https://github.com/{{ metadata.author.githubHandle }}"> 🐈‍⬛ My GitHub ^ↀᴥↀ^</a>
+        <span>&copy; 2025 {{ metadata.author.name }}</span>
       {% endblock %}
     </footer>
 
     <!-- Current page: {{ page.url | url }} -->
+  <script async defer src="/js/share-handler.js"></script>
   </body>
 </html>

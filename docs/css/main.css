@@ -46,7 +46,6 @@ share-widget {
   position: fixed;
   right: 20px;
   bottom: 20px;
-  opacity: 0.9;
 }
 
 share-widget div {
@@ -70,10 +69,23 @@ share-widget button:active {
 }
 
 dialog {
-  background-color: #66BB6A;;
+  background-color: rgba(250, 248, 242, 0.95); /* Parchment with slight transparency */
+  color: #3d402d; /* Olive text */
+  border: 1px solid #e0e0e0; /* Light border */
+  padding: 1em;
+  border-radius: 5px;
   position: fixed;
-  opacity: 0.9;
+  bottom: 20px; /* Position near the share button */
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1000;
+  opacity: 0; /* Start hidden */
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Smooth transition */
+  visibility: hidden; /* Hidden by default */
+}
+dialog[open] {
+  opacity: 1; /* Show when open */
+  visibility: visible;
 }
 
 img[align="left"] {
@@ -198,7 +210,7 @@ not met.
 
 DISCLAIMER
 THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
 OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
 COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
@@ -458,7 +470,7 @@ ul {
 }
 h1 {
   font-size: 2.074rem;
-  color: #66BB6A;
+  color: #faf8f2; /* Light color for dark theme */
 }
 h1,
 h2 {
@@ -647,7 +659,7 @@ kbd {
 }
 mark {
   background: inherit;
-  color: #66BB6A;
+  color: #b9ee9e; /* Use our primary link color */
 }
 h1,
 h2,
@@ -661,13 +673,7 @@ h4,
 h6 {
   font-style: italic;
 }
-a {
-  color: #66BB6A;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
+/* Remove conflicting link styles - our main link styles will handle this */
 small {
   color: #ccc;
 }
@@ -932,55 +938,50 @@ header p {
   margin-top: 0;
 }
 header nav {
-  position: fixed;
+  /* Removed fixed positioning for simple solution */
   top: 0;
   left: 0;
   width: 100vw;
   padding: 0.375em 1.5em;
-  background: hsla(0, 0%, 90%, 0.9);
+  background: transparent;
   font-weight: 200;
   text-align: right;
-}
-header nav h1 {
-  float: left;
-  font-size: inherit;
-  line-height: inherit;
-  margin: 0;
-  text-align: left;
 }
 header nav a {
   font-weight: 700;
   text-decoration: none;
   font-family: var(--font-family);
-  color: #181818;
-  margin-left: 1.5em;
+  color: #faf8f2; /* Light parchment color */
+  margin-left: 0.5em; /* Reduced space to the left of navigation links */
 }
-header nav a:first-of-type {
-  margin-left: auto;
+header nav a:hover {
+  color: #61DAFB !important; /* Light blue on hover - consistent with our link theme */
 }
-header nav a:last-of-type {
-  margin-right: 1.5em;
+header nav h1 {
+  margin-bottom: 0.1em; /* Reduced space below the title */
 }
-header nav label {
-  color: #000;
-  cursor: pointer;
-  margin: 0;
-  font-style: normal;
-  text-align: right;
+header nav h1 a {
+  color: #faf8f2; /* Light parchment color for site title */
+  font-size: 2rem;
 }
-main {
-  max-width: 70rem;
-  margin: 0 auto;
-  border-top: 0.5px solid #ccc;
-}
+/* Full-width footer background with solarpunk theme */
 footer {
-  background: #181818;
-  color: #fff;
-  padding: 3em;
-  text-align: center;
+  background: #000000;
+  color: #faf8f2; /* Light parchment text */
+  padding: 2rem 0; /* Vertical padding for full-width background */
+  margin-top: 2rem; /* Space above footer */
+  border-top: 1px solid #ffffff;
+  width: 35em; /* Match article width */
+  margin-left: auto;
+  margin-right: auto;
 }
+
+/* Footer content container */
 footer > * {
-  margin: 1.5em;
+  max-width: 37.5em;
+  margin: 0 auto;
+  padding: 0 1.5em;
+  text-align: center;
 }
 footer nav a img {
   vertical-align: middle;
@@ -1145,12 +1146,20 @@ pre[class*="language-"] {
 input[type="submit"],
 button[type="submit"],
 button:not([disabled]) {
-  background: var(--primary);
+  background: #b9ee9e; 
+  color: #000000; /* Dark text for contrast */
+  border: none;
+  padding: 0.75em 1.5em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 input[type="submit"]:hover,
 button[type="submit"]:hover,
 button:not([disabled]):hover {
-  background: var(--primary-dark);
+  background: #b9ee9e; 
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(79, 193, 255, 0.3);
 }
 
 dd + dt {
@@ -1161,8 +1170,23 @@ blockquote {
   border-left: 1px solid var(--primary);
 }
 
+/* Consistent link styling with proper specificity */
 a {
-  color: var(--primary);
+  color: #b9ee9e !important; /* Primary link color */
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #61DAFB !important; /* Hover state */
+}
+
+a:visited {
+  color: #b9ee9e !important; /* Visited links - same as primary */
+}
+
+a:active {
+  color: #61DAFB !important; /* Active state - same as hover */
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -1176,3 +1200,29 @@ a {
   object-fit: cover;   /* Maintains aspect ratio */
   margin: 10px auto;   /* Adds some spacing */
 }
+
+main {
+  /* padding-top removed as header is no longer fixed */
+}
+
+/* Full-width footer background with solarpunk theme */
+footer {
+  background: #000000;
+  color: #faf8f2; /* Light parchment text */
+  padding: 2rem 0; /* Vertical padding for full-width background */
+  margin-top: 2rem; /* Space above footer */
+  border-top: 1px solid #ffffff;
+  text-align: center;
+  width: 35em; /* Match article width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Footer content container */
+footer > * {
+  max-width: 37.5em;
+  margin: 0 auto;
+  padding: 0 1.5em;
+  text-align: center;
+}
+
