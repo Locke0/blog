@@ -1,7 +1,7 @@
 ---
 title: █1%▒▒▒▒▒▒▒▒▒▒▒▒▒
 layout: layouts/post.njk
-image: /blog/img/remote/solarpunk.jpg
+image: /img/remote/solarpunk.jpg
 eleventyNavigation:
   key: About
   order: 2
