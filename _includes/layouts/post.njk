@@ -9,11 +9,29 @@ templateClass: tmpl-post
    <h2>{{ title }}</h2>
    {% set wc = content | striptags | wordcount %}
    {% set wPerMinute = (wc / 240) + 1 %}
-   <p> </p>
-   <aside> {{ wPerMinute | round }} min read. </aside>
+   <aside>{{ wPerMinute | round }} min read.</aside>
 {% endblock %}
 
 {% block article %}
+<!-- Table of Contents -->
+{% set headings = extractMarkdownHeadings(content) %}
+<!-- Debug: Found {{ headings.length }} headings -->
+{% if headings.length > 0 %}
+<div class="toc">
+  <h3>Table of Contents</h3>
+  <nav class="toc-nav">
+    {% for heading in headings %}
+      <a href="#{{ heading.id }}" class="toc-link toc-level-{{ heading.level }}">
+        {{ heading.text }}
+      </a>
+    {% endfor %}
+  </nav>
+</div>
+{% else %}
+<!-- Debug: No headings found. Content length: {{ content | length }} -->
+<!-- Content preview: {{ content | truncate(200) }} -->
+{% endif %}
+
 {{ content | safe }}
 
 <script type="application/ld+json">

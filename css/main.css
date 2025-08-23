@@ -1,6 +1,6 @@
 /* Color customization */
 :root {
-  --primary: #66BB6A;
+  --primary: #b9ee9e;
   --primary-dark: #1e1502;
 }
 
@@ -22,6 +22,11 @@ main img {
 /* Avoid the header hiding the content on anchor scroll. */
 article * {
   scroll-margin-top: 50px;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
 }
 
 /* "Content-visibility: auto" move the images over the other elements
@@ -107,7 +112,7 @@ dl {
 
 #reading-progress {
   z-index: 1;
-  background-color: var(--primary);
+  background-color: #000000; /* Changed to black */
   width: 100vw;
   position: absolute;
   left: 0;
@@ -116,6 +121,15 @@ dl {
   transform: translate(-100vw, 0);
   will-change: transform;
   pointer-events: none;
+}
+
+/* Ensure reading progress doesn't extend beyond page boundaries on mobile */
+@media (max-width: 768px) {
+  #reading-progress {
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
 }
 
 #posts li {
@@ -274,11 +288,15 @@ SOFTWARE.
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrollbar from affecting layout */
+  /* Ensure consistent layout regardless of scrollbar presence */
+  scrollbar-gutter: stable;
 }
 body {
   margin: 0;
   letter-spacing: 0.05em;
   color: #ffffff;
+  overflow-x: hidden; /* Prevent horizontal scrollbar from affecting layout */
 }
 h1 {
   font-size: 2em;
@@ -483,10 +501,10 @@ h2 {
   margin-bottom: 1.36rem;
 }
 h2 {
-  font-size: 1.728rem;
+  font-size: 1.2rem; /* Changed from 1.728rem to current h3 size */
 }
 h3 {
-  font-size: 1.2rem;
+  font-size: 1rem; /* Smaller than h2 */
 }
 h3,
 h4 {
@@ -494,11 +512,11 @@ h4 {
   margin-bottom: 1.36rem;
 }
 h4 {
-  font-size: 1.2rem;
+  font-size: 0.9rem; /* Smaller than h3 */
 }
 h5,
 h6 {
-  font-size: 1rem;
+  font-size: 0.8rem; /* Even smaller */
   line-height: 1.6rem;
   margin-bottom: 1.36rem;
 }
@@ -928,7 +946,7 @@ header label {
   display: none;
 }
 header {
-  padding: 4.5em 1.5em 3em;
+  padding: 1em 1.5em 2em;
   width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -938,14 +956,20 @@ header {
   flex-direction: column;
   position: relative;
   background-size: cover;
-  background-position: center;
+  /* background-position now controlled per page via headerImagePosition frontmatter */
   background-repeat: no-repeat;
-  min-height: 300px;
+  min-height: 30vh; /* Use viewport height for better scaling */
+  margin-top: -0.5em;
 }
 
 /* Add background image when image frontmatter exists */
 header[style*="background-image"] {
   color: white;
+}
+
+/* Fallback background position for pages without headerImagePosition */
+header[style*="background-image"]:not([style*="background-position"]) {
+  background-position: center 70%; /* Default fallback position */
 }
 
 header[style*="background-image"]::before {
@@ -955,8 +979,101 @@ header[style*="background-image"]::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  /* Make overlay more transparent to show more image */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0.1) 100%);
   z-index: 0;
+}
+
+/* Base positioning for reading time */
+header aside {
+  position: absolute;
+  bottom: 2rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 1;
+}
+
+/* Center post titles in the header */
+header h2 {
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.6);
+  font-weight: 700;
+}
+
+/* Top Navigation Bar */
+.top-nav {
+  position: relative;
+  width: 100%;
+  height: 2.5em;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.95) 70%, rgba(0, 0, 0, 0.8) 100%);
+  z-index: 1000;
+  padding: 0 1em;
+  display: flex;
+  align-items: center;
+  /* Ensure consistent layout regardless of scrollbar presence */
+  box-sizing: border-box;
+}
+
+.top-nav #nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  /* Ensure navigation spans full width and buttons stay at edges */
+  min-width: 100%;
+}
+
+.top-nav #nav h1 {
+  margin: 0;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  margin-right: auto; /* Push to the left edge */
+}
+
+.top-nav #nav h1 a {
+  color: #faf8f2;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.top-nav #nav h1 a:hover {
+  color: #61DAFB;
+}
+
+.top-nav .nav-links {
+  display: flex;
+  gap: 1.5em;
+  align-items: center;
+  height: 100%;
+  margin-left: auto; /* Push to the right edge */
+}
+
+.top-nav a {
+  font-weight: 700;
+  text-decoration: none;
+  font-family: var(--font-family);
+  color: #faf8f2;
+  padding: 0.5em 0.75em;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-size: 1.5rem;
+}
+
+.top-nav a:hover {
+  color: #61DAFB;
 }
 
 /* Ensure header content stays above the overlay */
@@ -967,33 +1084,138 @@ header > * {
 header p {
   margin-top: 0;
 }
-header nav {
-  /* Removed fixed positioning for simple solution */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  padding: 0.375em 1.5em;
-  background: transparent;
-  font-weight: 200;
-  text-align: right;
+/* Old header nav styles removed - now using top-nav */
+
+/* Responsive header heights for different screen sizes */
+@media (min-width: 1400px) {
+  header {
+    min-height: 48vh; /* Shorter on very wide screens to show more image */
+  }
+  
+  /* Position reading time consistently from bottom across viewport sizes */
+  header aside {
+    position: absolute;
+    bottom: 2rem;
+    left: 1rem;
+    right: 1rem;
+  }
 }
-header nav a {
-  font-weight: 700;
-  text-decoration: none;
-  font-family: var(--font-family);
-  color: #faf8f2; /* Light parchment color */
-  margin-left: 0.5em; /* Reduced space to the left of navigation links */
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  header {
+    min-height: 40vh; /* Medium-large screens */
+  }
+  
+  /* Position reading time consistently from bottom across viewport sizes */
+  header aside {
+    position: absolute;
+    bottom: 2rem;
+    left: 1rem;
+    right: 1rem;
+  }
 }
-header nav a:hover {
-  color: #61DAFB !important; /* Light blue on hover - consistent with our link theme */
+
+@media (min-width: 900px) and (max-width: 1199px) {
+  header {
+    min-height: 30vh; /* Standard desktop/laptop - your "half screen" size */
+  }
+  
+  /* Position reading time consistently from bottom across viewport sizes */
+  header aside {
+    position: absolute;
+    bottom: 2rem;
+    left: 1rem;
+    right: 1rem;
+  }
 }
-header nav h1 {
-  margin-bottom: 0.1em; /* Reduced space below the title */
+
+@media (min-width: 769px) and (max-width: 899px) {
+  header {
+    min-height: 25vh; /* Tablet landscape */
+  }
+  
+  /* Position reading time consistently from bottom across viewport sizes */
+  header aside {
+    position: absolute;
+    bottom: 2rem;
+    left: 1rem;
+    right: 1rem;
+  }
 }
-header nav h1 a {
-  color: #faf8f2; /* Light parchment color for site title */
-  font-size: 2rem;
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+  .top-nav {
+    padding: 0.3em 1em;
+    height: auto; /* Allow height to adjust */
+    min-height: 3em; /* Ensure minimum height */
+  }
+  
+  .top-nav #nav {
+    flex-direction: row; /* Keep horizontal layout */
+    gap: 0.5em;
+    text-align: center;
+    flex-wrap: wrap; /* Allow wrapping if needed */
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .top-nav #nav h1 {
+    text-align: left;
+    flex: 1; /* Allow title to take available space */
+    min-width: 0; /* Allow text to wrap */
+  }
+  
+  .top-nav #nav h1 a {
+    font-size: 1.2rem; /* Smaller font on mobile */
+    white-space: nowrap; /* Prevent title from wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Show ellipsis if too long */
+    max-width: 100%; /* Use full available width */
+  }
+  
+  .top-nav .nav-links {
+    gap: 0.5em; /* Reduce gap on mobile */
+    flex-shrink: 0; /* Prevent nav links from shrinking */
+  }
+  
+  .top-nav a {
+    padding: 0.4em 0.6em; /* Smaller padding on mobile */
+    font-size: 1.2rem; /* Match title font size on mobile */
+  }
+  
+  /* Extra small mobile devices */
+  @media (max-width: 480px) {
+    .top-nav #nav h1 a {
+      font-size: 1rem; /* Even smaller font on very small screens */
+      /* Remove max-width restriction - let it use available space */
+    }
+    
+    .top-nav .nav-links {
+      gap: 0.3em; /* Minimal gap on very small screens */
+    }
+    
+    .top-nav a {
+      padding: 0.3em 0.5em; /* Minimal padding */
+      font-size: 1rem; /* Match title font size on very small screens */
+    }
+  }
+  
+  header {
+    margin-top: 0; /* No margin - image starts at top */
+    padding: 1em 1em 1.5em;
+    min-height: 30vh; /* Shorter on mobile for better image visibility */
+  }
+  
+  /* Position reading time consistently from bottom across viewport sizes */
+  header aside {
+    position: absolute;
+    bottom: 2rem;
+    left: 1rem;
+    right: 1rem;
+  }
 }
+
 /* Full-width footer background with solarpunk theme */
 footer {
   background: #000000;
@@ -1065,10 +1287,10 @@ dd {
   margin-left: 2.25em;
 }
 dd + dt {
-  border-top: 1px solid #46D00F;
+  border-top: 1px solid #000000;
 }
 blockquote {
-  border-left: 1px solid #46D00F;
+  border-left: 1px solid #000000;
   padding: 0 1.5em;
   margin: 1.5em 0 1.5em 1.5em;
 }
@@ -1220,21 +1442,73 @@ blockquote {
 
 /* Consistent link styling with proper specificity */
 a {
-  color: #b9ee9e !important; /* Primary link color */
-  transition: color 0.2s ease;
+  color: #b9ee9e; /* Primary link color */
+  transition: color 0.2s ease, background-color 0.2s ease;
   text-decoration: none;
 }
 
 a:hover {
-  color: #61DAFB !important; /* Hover state */
+  color: #61DAFB; /* Hover state */
 }
 
 a:visited {
-  color: #b9ee9e !important; /* Visited links - same as primary */
+  color: #b9ee9e; /* Visited links - same as primary */
 }
 
 a:active {
-  color: #61DAFB !important; /* Active state - same as hover */
+  color: #61DAFB; /* Active state - same as hover */
+}
+
+/* Force hover state to persist */
+a:hover,
+a:focus {
+  color: #61DAFB !important;
+}
+
+/* Old header nav override styles removed - now using top-nav */
+
+/* Old header nav hover styles removed - now using top-nav */
+
+/* Homepage specific link styling */
+.professional-statement a {
+  color: #b9ee9e;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.professional-statement a:hover,
+.professional-statement a:focus {
+  color: #61DAFB !important;
+}
+
+/* Ensure publication and project links have proper hover effects */
+#publications a,
+#projects a {
+  color: #b9ee9e;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+#publications a:hover,
+#publications a:focus,
+#projects a:hover,
+#projects a:focus {
+  color: #61DAFB !important;
+}
+
+/* Social media and contact links */
+.professional-statement p a {
+  color: #b9ee9e;
+  transition: color 0.2s ease;
+  text-decoration: none;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+.professional-statement p a:hover,
+.professional-statement p a:focus {
+  color: #61DAFB !important;
+  background-color: rgba(185, 238, 158, 0.1);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -1293,5 +1567,145 @@ footer > * {
 .profile-image:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Table of Contents Styling */
+.toc {
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid var(--primary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(102, 187, 106, 0.1);
+}
+
+.toc h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #faf8f2;
+  font-size: 1.2rem;
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 0.5rem;
+}
+
+.toc-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.toc-link {
+  color: #b9ee9e;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  padding: 0.3rem 0;
+  border-radius: 4px;
+  padding-left: 0.5rem;
+}
+
+.toc-link:hover {
+  color: #61DAFB;
+  background-color: rgba(185, 238, 158, 0.1);
+  transform: translateX(5px);
+}
+
+.toc-level-1 {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.toc-level-2 {
+  font-weight: 500;
+  font-size: 1rem;
+  padding-left: 1.5rem;
+}
+
+.toc-level-3 {
+  font-weight: 400;
+  font-size: 0.95rem;
+  padding-left: 2.5rem;
+}
+
+.toc-level-4 {
+  font-weight: 400;
+  font-size: 0.9rem;
+  padding-left: 3.5rem;
+}
+
+.toc-level-5 {
+  font-weight: 400;
+  font-size: 0.85rem;
+  padding-left: 4.5rem;
+}
+
+.toc-level-6 {
+  font-weight: 400;
+  font-size: 0.8rem;
+  padding-left: 5.5rem;
+}
+
+/* Mobile responsive table of contents */
+@media (max-width: 768px) {
+  .toc {
+    margin: 1rem 0;
+    padding: 1rem;
+  }
+  
+  .toc h3 {
+    font-size: 1.1rem;
+  }
+  
+  .toc-link {
+    font-size: 0.9rem;
+    padding: 0.25rem 0;
+  }
+  
+  .toc-level-1 {
+    font-size: 1rem;
+  }
+  
+  .toc-level-2 {
+    font-size: 0.95rem;
+    padding-left: 1rem;
+  }
+  
+  .toc-level-3 {
+    font-size: 0.9rem;
+    padding-left: 1.5rem;
+  }
+  
+  .toc-level-4 {
+    font-size: 0.85rem;
+    padding-left: 2rem;
+  }
+  
+  .toc-level-5 {
+    font-size: 0.8rem;
+    padding-left: 2.5rem;
+  }
+  
+  .toc-level-6 {
+    font-size: 0.75rem;
+    padding-left: 3rem;
+  }
+}
+
+/* Ensure headings have proper spacing for anchor links */
+h1, h2, h3, h4, h5, h6 {
+  scroll-margin-top: 80px;
+}
+
+/* Style for direct link anchors */
+.direct-link {
+  color: transparent;
+  text-decoration: none;
+  margin-left: 0.5rem;
+  font-size: 0.8em;
+  transition: color 0.2s ease;
+}
+
+.direct-link:hover {
+  color: var(--primary);
 }
 

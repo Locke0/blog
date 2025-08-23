@@ -2,14 +2,15 @@
 title: Why Do Computer Use Agents Fail? The Brittle Stack of AI Limitations
 description: Exploring the common failure modes of AI agents and what we can learn from them
 layout: layouts/post.njk
-image: /blog/img/remote/cartoon-robot-in-a-shop-1280w.jpg
+image: /blog/img/remote/robot_repair_shop.jpg
 tags:
   - posts
   - ai
   - agents
+headerImagePosition: center 90%
 ---
 
-### Introduction
+### 0. Introduction
 
 The promise of computer use agents (CUAs), AI systems that can perceive and act on a computer screen just like a human, is a compelling one. We envision an intelligent assistant that can:
 
@@ -18,7 +19,7 @@ The promise of computer use agents (CUAs), AI systems that can perceive and act 
 - Debug robotics CAD design
 - Navigate complex game engine interfaces
 
-![Human user following tutorial instructions to select spreadsheet data](/blog/img/why_do_computer_use_agents_fail/ui-tars-tutorial-screenshot.png)
+![Human user following tutorial instructions to select spreadsheet data](/img/why_do_computer_use_agents_fail/ui-tars-tutorial-screenshot.png)
 (*[UI-TARS research, 2025](https://seed-tars.com/1.5)*)
 
 Over the past year, we've seen remarkable progress, with models like UI-TARS-1.5, OpenCUA, & Claude Sonnet 4, and multi-agent systems like CoACT, GTA-1 w/ o3, JEDI w/ o3, & Agent S2 setting new performance records on benchmarks like OSWorld and ScreenSpot-Pro. Yet, despite these advances, the general-purpose CUA remains elusive.
@@ -31,7 +32,7 @@ The first and most fundamental challenge for any CUA is perception—the ability
 
 **Visual Placeholder: [Side-by-side comparison: Human sees "Submit button" vs. AI sees "pixel array with RGB values"]**
 
-#### 1.1 The Problem of "Tail Classes"
+#### 1.1 The Problem of Tail Classes
 
 **What it is:** Most agents are trained on common websites and popular applications, creating a distribution imbalance.
 
@@ -248,7 +249,7 @@ The failures of computer use agents are not fundamental flaws but a clear roadma
 
 ---
 
-### Conclusion
+### 5. Conclusion
 
 The journey to a truly generalist computer use agent is ongoing. With each new paper and each failed run on a leaderboard, we get:
 

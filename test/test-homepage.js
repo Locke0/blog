@@ -33,7 +33,7 @@ describe("check build output for homepage", () => {
     });
 
     it("should have a top navigation", () => {
-      const navs = Array.from(doc.querySelectorAll("header nav a"));
+      const navs = Array.from(doc.querySelectorAll(".top-nav a"));
 
       expect(navs.length).to.be.greaterThan(1);
     });
