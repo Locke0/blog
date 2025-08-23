@@ -9,7 +9,6 @@ tags:
   - agents
 headerImagePosition: center 90%
 ---
-
 ### 0. Introduction
 
 The promise of computer use agents (CUAs), AI systems that can perceive and act on a computer screen just like a human, is a compelling one. We envision an intelligent assistant that can:
