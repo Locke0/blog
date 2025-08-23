@@ -19,7 +19,7 @@ The promise of computer use agents (CUAs), AI systems that can perceive and act 
 - Debug robotics CAD design
 - Navigate complex game engine interfaces
 
-![Human user following tutorial instructions to select spreadsheet data](/img/why_do_computer_use_agents_fail/ui-tars-tutorial-screenshot.png)
+![Human user following tutorial instructions to select spreadsheet data](/blog/img/why_do_computer_use_agents_fail/ui-tars-tutorial-screenshot.png)
 (*[UI-TARS research, 2025](https://seed-tars.com/1.5)*)
 
 Over the past year, we've seen remarkable progress, with models like UI-TARS-1.5, OpenCUA, & Claude Sonnet 4, and multi-agent systems like CoACT, GTA-1 w/ o3, JEDI w/ o3, & Agent S2 setting new performance records on benchmarks like OSWorld and ScreenSpot-Pro. Yet, despite these advances, the general-purpose CUA remains elusive.

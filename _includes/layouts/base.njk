@@ -84,7 +84,7 @@
     </nav>
     
     <!-- Header Content -->
-    <header {% if image %}style="background-image: url('{{ image }}'){% if headerImagePosition %}; background-position: {{ headerImagePosition }}{% endif %}"{% endif %}>
+    <header {% if image %}style="background-image: url('{{ image | url }}'){% if headerImagePosition %}; background-position: {{ headerImagePosition }}{% endif %}"{% endif %}>
       {% block extraArticleHeader %}{% endblock %}
                   
       <dialog id="message"></dialog>

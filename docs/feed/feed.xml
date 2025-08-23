@@ -28,7 +28,7 @@
 &lt;li&gt;Debug robotics CAD design&lt;/li&gt;
 &lt;li&gt;Navigate complex game engine interfaces&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;https://locke0.github.io/img/why_do_computer_use_agents_fail/ui-tars-tutorial-screenshot.png&quot; alt=&quot;Human user following tutorial instructions to select spreadsheet data&quot; /&gt;&lt;br /&gt;
+&lt;p&gt;&lt;img src=&quot;https://locke0.github.io/blog/img/why_do_computer_use_agents_fail/ui-tars-tutorial-screenshot.png&quot; alt=&quot;Human user following tutorial instructions to select spreadsheet data&quot; /&gt;&lt;br /&gt;
 (&lt;em&gt;&lt;a href=&quot;https://seed-tars.com/1.5&quot;&gt;UI-TARS research, 2025&lt;/a&gt;&lt;/em&gt;)&lt;/p&gt;
 &lt;p&gt;Over the past year, we&#39;ve seen remarkable progress, with models like UI-TARS-1.5, OpenCUA, &amp;amp; Claude Sonnet 4, and multi-agent systems like CoACT, GTA-1 w/ o3, JEDI w/ o3, &amp;amp; Agent S2 setting new performance records on benchmarks like OSWorld and ScreenSpot-Pro. Yet, despite these advances, the general-purpose CUA remains elusive.&lt;/p&gt;
 &lt;hr /&gt;

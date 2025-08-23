@@ -350,6 +350,16 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.setLibrary("md", markdownLibrary);
 
+  // Add the missing absoluteUrl filter
+  eleventyConfig.addFilter("absoluteUrl", function(url, baseUrl) {
+    if (!url) return "";
+    if (url.startsWith("http")) return url;
+    if (url.startsWith("/")) {
+      return baseUrl + url;
+    }
+    return baseUrl + "/" + url;
+  });
+
   // Browsersync Overrides
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
