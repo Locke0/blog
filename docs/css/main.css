@@ -742,7 +742,10 @@ dt {
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  src: local("Ubuntu"), url("https://fonts.gstatic.com/s/ubuntu/v20/4iCs6KVjbNBYlgo6eA.woff2") format("woff2");
+  src: local("Ubuntu"), 
+       local("Ubuntu-Regular"),
+       url("https://fonts.gstatic.com/s/ubuntu/v20/4iCs6KVjbNBYlgo6eA.woff2") format("woff2"),
+       url("https://fonts.gstatic.com/s/ubuntu/v20/4iCs6KVjbNBYlgo6eA.woff") format("woff");
 }
 
 @font-face {
@@ -750,7 +753,10 @@ dt {
   font-weight: 500;
   font-style: normal;
   font-display: swap;
-  src: local("Ubuntu Medium"), url("https://fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCjC3jvWyNL4U.woff2") format("woff2");
+  src: local("Ubuntu Medium"), 
+       local("Ubuntu-Medium"),
+       url("https://fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCjC3jvWyNL4U.woff2") format("woff2"),
+       url("https://fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCjC3jvWyNL4U.woff") format("woff");
 }
 
 @font-face {
@@ -758,7 +764,10 @@ dt {
   font-weight: 700;
   font-style: normal;
   font-display: swap;
-  src: local("Ubuntu Bold"), url("https://fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCxCvjvWyNL4U.woff2") format("woff2");
+  src: local("Ubuntu Bold"), 
+       local("Ubuntu-Bold"),
+       url("https://fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCxCvjvWyNL4U.woff2") format("woff2"),
+       url("https://fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCxCvjvWyNL4U.woff") format("woff");
 }
 .fonts-loaded {
   font-family: "FacultyGlyphic", Helvetica, sans-serif;

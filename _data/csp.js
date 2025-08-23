@@ -35,13 +35,16 @@ const CSP = {
     ["default-src", SELF],
     // No plugins
     ["object-src", quote("none")],
-    // Script from same-origin and inline-hashes.
-    // If you need to add an external host for scripts you need to add an item like 'https://code.jquery.com/jquery-3.6.0.slim.min.js' to this list.
-    ["script-src", SELF, /* Replaced by csp.js plugin */ "HASHES"],
+    // Script from same-origin, inline-hashes, and Google Analytics
+    ["script-src", SELF, "https://www.googletagmanager.com", "https://www.google-analytics.com", /* Replaced by csp.js plugin */ "HASHES"],
     // Inline CSS is allowed.
     ["style-src", quote("unsafe-inline")],
     // Images may also come from data-URIs.
     ["img-src", SELF, "data:"],
+    // Allow fonts from Google Fonts
+    ["font-src", SELF, "https://fonts.gstatic.com"],
+    // Allow Google Analytics connections
+    ["connect-src", SELF, "https://www.google-analytics.com", "https://analytics.google.com"],
 
     // To add new rules, add new array literals here or extend those above with
     // additional allowed elements.
