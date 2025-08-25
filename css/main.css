@@ -1066,7 +1066,7 @@ header p {
 /* Responsive header heights for different screen sizes */
 @media (min-width: 1400px) {
   header {
-    min-height: 60vh; /* Shorter on very wide screens to show more image */
+    min-height: 50vh; /* Shorter on very wide screens to show more image */
   }
   
   /* Position reading time consistently from bottom across viewport sizes */
@@ -1080,7 +1080,7 @@ header p {
 
 @media (min-width: 1200px) and (max-width: 1399px) {
   header {
-    min-height: 50vh; /* Medium-large screens */
+    min-height: 40vh; /* Medium-large screens */
   }
   
   /* Position reading time consistently from bottom across viewport sizes */

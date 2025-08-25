@@ -7,7 +7,7 @@ tags:
   - posts
   - ai
   - agents
-headerImagePosition: center 90%
+headerImagePosition: center 100%
 ---
 ### 0. Introduction
 
