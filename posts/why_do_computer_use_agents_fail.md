@@ -2,7 +2,7 @@
 title: Why Do Computer Use Agents Fail? The Brittle Stack of AI Limitations
 description: Exploring the common failure modes of AI agents and what we can learn from them
 layout: layouts/post.njk
-image: /img/remote/robot_repair_shop.jpg
+image: img/remote/robot_repair_shop.jpg
 tags:
   - posts
   - ai
