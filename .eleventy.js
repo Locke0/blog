@@ -396,7 +396,8 @@ module.exports = function (eleventyConfig) {
     // Best paired with the `url` filter: https://www.11ty.io/docs/filters/url/
 
     // You can also pass this in on the command line using `--pathprefix`
-    pathPrefix: "/blog",
+    // Only use pathPrefix in production, not in local development
+    pathPrefix: /serve|watch/.test(process.argv.join()) ? "" : "/blog",
 
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",

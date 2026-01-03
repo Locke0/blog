@@ -1,6 +1,6 @@
 /* Color customization */
 :root {
-  --primary: #b9ee9e;
+  --primary: #a8d5a3;
   --primary-dark: #1e1502;
 }
 
@@ -682,7 +682,7 @@ kbd {
 }
 mark {
   background: inherit;
-  color: #b9ee9e; /* Use our primary link color */
+  color: #a8d5a3; /* Use our primary link color */
 }
 h1,
 h2,
@@ -1016,17 +1016,18 @@ header h2 {
   margin-right: auto; /* Push to the left edge */
 }
 
-.top-nav #nav h1 a {
-  color: #faf8f2;
-  font-size: 1.5rem;
+/* Navigation links - override base link styles */
+.top-nav a {
+  color: #faf8f2; /* Light color for nav bar */
   font-weight: 700;
+  font-family: var(--font-family);
   text-decoration: none;
-  transition: color 0.2s ease;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  transition: color 0.2s ease;
 }
 
-.top-nav #nav h1 a:hover {
-  color: #61DAFB;
+.top-nav #nav h1 a {
+  font-size: 1.5rem;
 }
 
 .top-nav .nav-links {
@@ -1034,23 +1035,18 @@ header h2 {
   gap: 1.5em;
   align-items: center;
   height: 100%;
-  margin-left: auto; /* Push to the right edge */
+  margin-left: auto;
 }
 
-.top-nav a {
-  font-weight: 700;
-  text-decoration: none;
-  font-family: var(--font-family);
-  color: #faf8f2;
+.top-nav .nav-links a {
   padding: 0.5em 0.75em;
   border-radius: 4px;
-  transition: all 0.2s ease;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   font-size: 1.5rem;
 }
 
-.top-nav a:hover {
-  color: #61DAFB;
+.top-nav a:hover,
+.top-nav a:focus {
+  color: #a8d5a3; /* Soft light green on hover */
 }
 
 /* Ensure header content stays above the overlay */
@@ -1393,7 +1389,7 @@ pre[class*="language-"] {
 input[type="submit"],
 button[type="submit"],
 button:not([disabled]) {
-  background: #b9ee9e; 
+  background: #a8d5a3; 
   color: #000000; /* Dark text for contrast */
   border: none;
   padding: 0.75em 1.5em;
@@ -1404,9 +1400,9 @@ button:not([disabled]) {
 input[type="submit"]:hover,
 button[type="submit"]:hover,
 button:not([disabled]):hover {
-  background: #b9ee9e; 
+  background: #b8e5b3; 
   transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(79, 193, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(168, 213, 163, 0.3);
 }
 
 dd + dt {
@@ -1417,75 +1413,39 @@ blockquote {
   border-left: 1px solid var(--primary);
 }
 
-/* Consistent link styling with proper specificity */
+/* ========================================
+   Link Styling
+   ======================================== */
+
+/* Base link styles - applies to all links except navigation */
 a {
-  color: #b9ee9e; /* Primary link color */
-  transition: color 0.2s ease, background-color 0.2s ease;
+  color: #a8d5a3; /* Soft light green */
   text-decoration: none;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-a:hover {
-  color: #61DAFB; /* Hover state */
+a:hover,
+a:focus {
+  color: #b8e5b3; /* Brighter soft light green on hover */
 }
 
 a:visited {
-  color: #b9ee9e; /* Visited links - same as primary */
+  color: #a8d5a3;
 }
 
 a:active {
-  color: #61DAFB; /* Active state - same as hover */
+  color: #b8e5b3;
 }
 
-/* Force hover state to persist */
-a:hover,
-a:focus {
-  color: #61DAFB !important;
-}
-
-/* Old header nav override styles removed - now using top-nav */
-
-/* Old header nav hover styles removed - now using top-nav */
-
-/* Homepage specific link styling */
-.professional-statement a {
-  color: #b9ee9e;
-  transition: color 0.2s ease;
-  text-decoration: none;
-}
-
-.professional-statement a:hover,
-.professional-statement a:focus {
-  color: #61DAFB !important;
-}
-
-/* Ensure publication and project links have proper hover effects */
-#publications a,
-#projects a {
-  color: #b9ee9e;
-  transition: color 0.2s ease;
-  text-decoration: none;
-}
-
-#publications a:hover,
-#publications a:focus,
-#projects a:hover,
-#projects a:focus {
-  color: #61DAFB !important;
-}
-
-/* Social media and contact links */
+/* Social media and contact links - additional styling */
 .professional-statement p a {
-  color: #b9ee9e;
-  transition: color 0.2s ease;
-  text-decoration: none;
   padding: 0.2em 0.4em;
   border-radius: 3px;
 }
 
 .professional-statement p a:hover,
 .professional-statement p a:focus {
-  color: #61DAFB !important;
-  background-color: rgba(185, 238, 158, 0.1);
+  background-color: rgba(168, 213, 163, 0.1);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -1573,7 +1533,7 @@ footer > * {
 }
 
 .toc-link {
-  color: #b9ee9e;
+  color: #a8d5a3;
   text-decoration: none;
   transition: all 0.2s ease;
   padding: 0.3rem 0;
@@ -1582,8 +1542,8 @@ footer > * {
 }
 
 .toc-link:hover {
-  color: #61DAFB;
-  background-color: rgba(185, 238, 158, 0.1);
+  color: #b8e5b3;
+  background-color: rgba(168, 213, 163, 0.1);
   transform: translateX(5px);
 }
 

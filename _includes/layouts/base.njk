@@ -33,7 +33,7 @@
     <meta name="twitter:site" content="@{{ metadata.author.twitterHandle }}">
     <meta name="twitter:creator" content="@{{ metadata.author.twitterHandle }}">
     {% if image %}
-      <meta property="og:image" content="{{ image | absoluteUrl(metadata.url) }}">
+      <meta property="og:image" content="{{ image | url | absoluteUrl(metadata.url) }}">
     {% endif %}
 
     <link rel="canonical" href="{{ metadata.url }}{{ canonicalUrl or page.url }}">
@@ -88,7 +88,7 @@
     </nav>
     
     <!-- Header Content -->
-    <header {% if image %}style="background-image: url('{{ image | absoluteUrl(metadata.url) }}'){% if headerImagePosition %}; background-position: {{ headerImagePosition }}{% endif %}"{% endif %}>
+    <header {% if image %}style="background-image: url('{{ image | url }}'){% if headerImagePosition %}; background-position: {{ headerImagePosition }}{% endif %}"{% endif %}>
       {% block extraArticleHeader %}{% endblock %}
                   
       <dialog id="message"></dialog>

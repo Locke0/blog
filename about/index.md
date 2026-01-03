@@ -1,14 +1,12 @@
 ---
 title: █1%▒▒▒▒▒▒▒▒▒▒▒▒
 layout: layouts/post.njk
-image: img/remote/solarpunk.jpg
+image: /img/remote/solarpunk.jpg
 eleventyNavigation:
   key: About
   order: 2
 headerImagePosition: center 0%
 ---
-My name is Yangyue Wang. I am a founding research engineer at [Metarch.ai](https://metarch.ai/) & an OSS AI researcher at [Manifold Research Group](https://www.manifoldrg.com/) focused on building more capable and general-purpose artificial intelligence systems. My work explores the frontiers of AI, drawing inspiration from fields like Autonomous Driving, Multi Modal Representation Learning, Theory of Mind, Dynamical Systems and Deep Reinforcement Learning to create agents that can learn, reason, and generalize effectively.
+Currently, I'm working on agentic foundation model research at [Fig.ai](https://fig.inc/) & [Manifold Research Group](https://www.manifoldrg.com/) with a focus on general-purpose software controlling systems. My work explores the methods and techniques to make today's agentic models more generalizable and reliable, drawing inspiration from fields like Multi Modal Representation Learning, Theory of Mind, Complex Dynamical Systems, Control Theory, and Deep Reinforcement Learning to create agents that can learn, reason, and generalize effectively.
 
-I received my Master's degree in Electrical & Systems Engineering from the University of Pennsylvania and my Bachelor's degree in Electrical & Computer Engineering from Ohio State University, where I built a strong foundation in autonomous robotics, computer vision, deep learning, control systems, and software engineering.
-
-This website is a collection of my work, projects, and thoughts.
+Feel free to reach out to me via <a href="https://www.linkedin.com/in/yangyue-wang/">LinkedIn</a> or <a href="mailto:yangyueresearch@gmail.com">email</a>!
