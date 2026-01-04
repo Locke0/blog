@@ -7,6 +7,8 @@ function showDraft(data) {
   
   // In production, only show published posts
   const isDraft = "draft" in data && data.draft !== false;
+  // A post is a draft only if explicitly set to true
+  // const isDraft = data.draft === true;
   const isPostInFuture =
     "scheduled" in data ? data.scheduled > todaysDate : false;
   
