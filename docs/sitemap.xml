@@ -9,11 +9,9 @@
     
   
   
-    
-  
   <url>
-    <loc>https://locke0.github.io/blog/posts/</loc>
-    <lastmod>2026-01-03T23:58:37.000Z</lastmod>
+    <loc>https://locke0.github.io/about/</loc>
+    <lastmod>2026-01-05T06:10:08.369Z</lastmod>
   </url>
   
   
@@ -25,8 +23,8 @@
   
   
   <url>
-    <loc>https://locke0.github.io/blog/page-list/</loc>
-    <lastmod>2025-08-20T20:05:59.545Z</lastmod>
+    <loc>https://locke0.github.io/posts/</loc>
+    <lastmod>2026-01-05T06:10:08.370Z</lastmod>
   </url>
   
   
@@ -38,8 +36,8 @@
   
   
   <url>
-    <loc>https://locke0.github.io/blog/tags/</loc>
-    <lastmod>2025-08-20T20:05:59.545Z</lastmod>
+    <loc>https://locke0.github.io/</loc>
+    <lastmod>2026-01-05T06:10:08.396Z</lastmod>
   </url>
   
   
@@ -51,8 +49,8 @@
   
   
   <url>
-    <loc>https://locke0.github.io/blog/tags/ai/</loc>
-    <lastmod>2025-08-20T20:05:59.545Z</lastmod>
+    <loc>https://locke0.github.io/page-list/</loc>
+    <lastmod>2026-01-05T06:10:08.398Z</lastmod>
   </url>
   
   
@@ -64,8 +62,8 @@
   
   
   <url>
-    <loc>https://locke0.github.io/blog/tags/agents/</loc>
-    <lastmod>2025-08-20T20:05:59.545Z</lastmod>
+    <loc>https://locke0.github.io/posts/why_do_computer_use_agents_fail/</loc>
+    <lastmod>2026-01-05T06:10:08.398Z</lastmod>
   </url>
   
   
@@ -77,8 +75,8 @@
   
   
   <url>
-    <loc>https://locke0.github.io/blog/tags/markdownheadings/</loc>
-    <lastmod>2025-08-20T20:05:59.545Z</lastmod>
+    <loc>https://locke0.github.io/tags/</loc>
+    <lastmod>2026-01-05T06:10:08.399Z</lastmod>
   </url>
   
   
@@ -89,11 +87,9 @@
     
   
   
-    
-  
   <url>
-    <loc>https://locke0.github.io/blog/about/</loc>
-    <lastmod>2026-01-03T23:58:37.000Z</lastmod>
+    <loc>https://locke0.github.io/tags/ai/</loc>
+    <lastmod>2026-01-05T06:10:08.399Z</lastmod>
   </url>
   
   
@@ -104,11 +100,9 @@
     
   
   
-    
-  
   <url>
-    <loc>https://locke0.github.io/blog/posts/why_do_computer_use_agents_fail/</loc>
-    <lastmod>2026-01-03T23:58:37.000Z</lastmod>
+    <loc>https://locke0.github.io/tags/agents/</loc>
+    <lastmod>2026-01-05T06:10:08.399Z</lastmod>
   </url>
   
   
@@ -119,10 +113,21 @@
     
   
   
+  <url>
+    <loc>https://locke0.github.io/tags/markdownheadings/</loc>
+    <lastmod>2026-01-05T06:10:08.399Z</lastmod>
+  </url>
+  
+  
+  
+  
+  
+  
     
   
+  
   <url>
-    <loc>https://locke0.github.io/blog/</loc>
-    <lastmod>2026-01-03T23:58:37.000Z</lastmod>
+    <loc>https://locke0.github.io/DIAGNOSIS/</loc>
+    <lastmod>2026-01-05T06:14:48.740Z</lastmod>
   </url>
 </urlset>

@@ -1,7 +1,7 @@
 {
   "title": "Yangyue's Blog",
-  "url": "https://locke0.github.io/blog",
-  "domain": "locke0.github.io/blog",
+  "url": "https://locke0.github.io",
+  "domain": "locke0.github.io",
   "description": "projects, ideas, solutions",
   "genre": "Insert a schema.org genre",
   "googleAnalyticsId": "${GOOGLE_ANALYTICS_ID}",
@@ -10,7 +10,7 @@
     "subtitle": "Locke's projects",
     "filename": "feed.xml",
     "path": "/feed/feed.xml", 
-    "id": "https://locke0.github.io/blog/posts"
+    "id": "https://locke0.github.io/posts"
   },
   "jsonfeed": {
     "path": "/feed/feed.json",
