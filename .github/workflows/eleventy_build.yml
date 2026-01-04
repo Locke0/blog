@@ -5,7 +5,7 @@ on:
       - main
       
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     
     strategy:
@@ -15,18 +15,35 @@ jobs:
     steps:
         - uses: actions/checkout@v2
 
-
         - name: Setup Node
           uses: actions/setup-node@v1
           with:
             node-version: ${{ matrix.node-version }}
 
-
         - run: npm ci
-
 
         - run: npm run build
 
+        - name: Upload build artifacts
+          uses: actions/upload-artifact@v3
+          with:
+            name: build-${{ matrix.node-version }}
+            path: docs
+            retention-days: 1
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+        - uses: actions/checkout@v2
+
+        - name: Download build artifacts
+          uses: actions/download-artifact@v3
+          with:
+            name: build-20.x
+            path: docs
 
         - name: Deploy
           uses: peaceiris/actions-gh-pages@v3
