@@ -397,7 +397,8 @@ module.exports = function (eleventyConfig) {
 
     // You can also pass this in on the command line using `--pathprefix`
     // Only use pathPrefix in production, not in local development
-    pathPrefix: /serve|watch/.test(process.argv.join()) ? "" : "/blog",
+    // Also check for CI environment (GitHub Actions sets CI=true)
+    pathPrefix: (process.env.CI === 'true' || (!/serve|watch/.test(process.argv.join()))) ? "/blog" : "",
 
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
